@@ -65,36 +65,10 @@ sudo reboot
 
 ## How to fix permission issues
 
- /opt folder
+```shell
+sb install fix-permissions
+```
 
-1. Stop all docker containers
+This will set permissions on `/mnt/local`, `/opt` and `/home/<user>` (where `<user>` is replaced with your username) to match saltbox' requirements and expectations.
 
-   ```shell
-   docker stop $(docker ps -a -q)
-   ```
-
-2. Change ownership of /opt. Replace `user` and `group` to match yours' (see [here](System.md#find-your-user-id-uid-and-group-id-gid)).
-
-   ```shell
-   sudo chown -R user:group /opt
-   ```
-
-3. Change permission inheritance of /opt.
-
-   ```shell
-   sudo chmod -R ugo+X /opt
-   ```
-
-4. Start all docker containers
-
-   ```shell
-   docker start $(docker ps -a -q)
-   ```
-
- /mnt folder
-
-1. Run the `mounts` tag
-
-   ```shell
-   sb install mounts
-   ```
+If you have installed software that requires unusual permissions within any of these locations, you will need to restore those permissions yourself, as required.

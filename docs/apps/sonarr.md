@@ -274,7 +274,11 @@ Make changes in the following sections:
 
             4. Your settings will look like this:
 
+<<<<<<< HEAD
                 Either API Key **OR** Username/Password shoudl be filled in, **not both**
+=======
+                Either API Key **OR** Username/Password should be filled in, **not both**
+>>>>>>> df54975eb12d12384936f38b95f4084eb03dc158
 
                 ![Sonarr Sabnzbd Downloader](../images/sonarr/sonarr-sabnzbd.png)
 
