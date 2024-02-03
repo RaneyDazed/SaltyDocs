@@ -52,30 +52,33 @@ Let’s go!
 
 2. Enter details about that remote in `settings.yml`.
 
-   Under `remotes` copy and paste [one of] the existing remotes you find there and edit it to suit this new remote.  Notably, change `NAME_OF_THE_REMOTE_YOU_JUST_CREATED` to the name of the remote you just created and `MOUNT_TEMPLATE` to either a valid saltbox-provided template [`google`, `dropbox`, `sftp`], a path to a Jinja template mount service [`/opt/mount-templates/box.j2`], or a path to a full rclone_vfs mount service file [`/opt/mount-templates/custom/my_custom_ceph_mount.service`].  The two latter options are not provided by saltbox, theses are files you create.
+    Under `remotes` copy and paste [one of] the existing remotes you find there and edit it to suit this new remote.  Notably, change `NAME_OF_THE_REMOTE_YOU_JUST_CREATED` to the name of the remote you just created and `MOUNT_TEMPLATE` to either a valid saltbox-provided template [`google`, `dropbox`, `sftp`], a path to a Jinja template mount service [`/opt/mount-templates/box.j2`], or a path to a full rclone_vfs mount service file [`/opt/mount-templates/custom/my_custom_ceph_mount.service`].  The two latter options are not provided by saltbox, theses are files you create.
 
-   If you are mounting a folder instead of the root of the cloud storage, specify that in the `remote` value: `remote: NAME_OF_THE_REMOTE_YOU_JUST_CREATED:/bing` or `remote: "NAME_OF_THE_REMOTE_YOU_JUST_CREATED:/Bang Boing"`.  Generally, we recommend avoiding spaces in the name of a directory you are planning to mount.
+    If you are mounting a folder instead of the root of the cloud storage, specify that in the `remote` value: `remote: NAME_OF_THE_REMOTE_YOU_JUST_CREATED:/bing` or `remote: "NAME_OF_THE_REMOTE_YOU_JUST_CREATED:/Bang Boing"`.  Generally, we recommend avoiding spaces in the name of a directory you are planning to mount.
 
-   Edit the other settings [`upload` and so forth] to suit your requirements.
+    Edit the other settings [`upload` and so forth] to suit your requirements.
 
-   Details on the meanings of these fields can be found [here](../../accounts.md#options-in-settingsyml)
+    Details on the meanings of these fields can be found [here](../../accounts.md#options-in-settingsyml)
    
     ```yaml
     rclone:
-      enabled: true
+      enabled: yes
       remotes:
         - remote: NAME_OF_THE_REMOTE_YOU_JUST_CREATED
-          template: MOUNT_TEMPLATE
-          upload: false # true to configure cloudplow upload for this remote
-          upload_from: /mnt/local/Media
-          vfs_cache:
-            enabled: false
-            max_age: 504h
-            size: 50G
+          settings:
+            mount: yes
+            template: MOUNT_TEMPLATE
+            union: yes
+            upload: no # true to configure cloudplow upload for this remote
+            upload_from: /mnt/local/Media
+            vfs_cache:
+              enabled: no
+              max_age: 504h
+              size: 50G
       version: latest
     ```
 
-  Save the file.
+    Save the file.
 
 3. Run the `mounts` tag.
 

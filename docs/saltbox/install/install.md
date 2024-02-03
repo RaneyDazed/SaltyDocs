@@ -1,3 +1,12 @@
+---
+hide:
+  - tags
+tags:
+  - remove
+  - install
+  - installer
+---
+
 # Install
 
 If you're migrating from Cloudbox you probably want the [Cloudbox migration instructions](../../reference/guides/cloudbox.md)
@@ -16,8 +25,12 @@ Broadly, the base install consists of six steps:
 5. Running the [install script](#step-5-saltbox)
 6. Configuring installed [applications](#step-6-app-setup)
 
+ALL STEPS ARE REQUIRED
+
 !!! warning
     There is no "uninstall" available.  To uninstall Saltbox entirely, you will need to wipe the machine and reinstall the OS.  You can remove all the containers, services, data, and the like, but there is no tracking of applications and packages that are installed in the OS.
+
+However, it is safe to run any saltbox tag[s] [including the install tags] at will.  Existing configurations are not overwritten [except for some "reset" tags and the "mounts" tag].
 
 ## Step 1: Dependencies
 
@@ -155,35 +168,44 @@ To edit any of the following configuration files use the command written in the 
         subdomain: login # (2)!
     downloads: /mnt/unionfs/downloads # (3)!
     rclone:
-      enabled: true # (4)!
+      enabled: yes # (4)!
       remotes: # (5)!
         - remote: google # (6)!
-          template: google # (7)!
-          upload: true # (8)!
-          upload_from: /mnt/local/Media # (9)!
-          vfs_cache:
-            enabled: false # (10)!
-            max_age: 504h # (11)!
-            size: 50G # (12)!
+          settings:
+            mount: yes # (7)!
+            template: google # (8)!
+            union: yes # (9)!
+            upload: yes # (10)!
+            upload_from: /mnt/local/Media # (11)!
+            vfs_cache:
+                enabled: no # (12)!
+                max_age: 504h # (13)!
+                size: 50G # (14)!
         - remote: dropbox
-          template: dropbox
-          upload: false
-          upload_from: /mnt/local/Media
-          vfs_cache:
-            enabled: false
-            max_age: 504h
-            size: 50G
+          settings:
+            mount: yes
+            template: dropbox
+            union: yes
+            upload: no
+            upload_from: /mnt/local/Media
+            vfs_cache:
+              enabled: no
+              max_age: 504h
+              size: 50G
         - remote: feeder
-          template: sftp
-          upload: false
-          upload_from: /mnt/local/Media
-          vfs_cache:
-            enabled: false
-            max_age: 504h
-            size: 50G
-      version: latest # (13)!
-    shell: bash # (14)!
-    transcodes: /mnt/local/transcodes # (15)!
+          settings:
+            mount: yes
+            template: sftp
+            union: yes
+            upload: no
+            upload_from: /mnt/local/Media
+            vfs_cache:
+              enabled: no
+              max_age: 504h
+              size: 50G
+      version: latest # (15)!
+    shell: bash # (16)!
+    transcodes: /mnt/local/transcodes # (17)!
     ```
 
     1. If the current server should have Authelia installed or use one installed elsewhere. For a multi-server setup, review the [considerations](../basics/install_types.md#feederboxmediabox-setup-considerations) listed for your Authelia setup.
@@ -209,8 +231,14 @@ To edit any of the following configuration files use the command written in the 
         ```yaml
         remote: "google:Media"
         ```
+        or
+        ```yaml
+        remote: "my-sftp:/path/to/my/files"
+        ```
 
-    7. The name of the template you want to use for the mount.
+    7. Toggles whether you wqant this remote mounted into the file system.
+
+    8. The name of the template you want to use for the mount.
 
         Currently Saltbox supports 4 options:
 
@@ -218,27 +246,29 @@ To edit any of the following configuration files use the command written in the 
         
         We recommend having the template file in a folder in /opt so that it moves with your install after a restore.
 
-    8. Toggles whether you intend to upload to this remote using Cloudplow.
+    9. Toggles whether you want this remote mount included in the union at `/mnt/unionfs`.  This requires that `mount` be enabled.
 
-    9. Defines the local path Cloudplow will use to upload from if the remote was upload enabled.
+    10. Toggles whether you intend to upload to this remote using Cloudplow.
 
-    10. Toggle for using Rclone VFS file cache.
+    11. Defines the local path Cloudplow will use to upload from if the remote was upload enabled.
 
-    11. Defines the max age of files in the cache.
+    12. Toggle for using Rclone VFS file cache.
 
-    12. Defines the max size of the cache.
+    13. Defines the max age of files in the cache.
+
+    14. Defines the max size of the cache.
 
         The cache can grow above this value in actual usage (polls the cache once a minute) so leave some headroom when using this.
 
-    13. Rclone version that Saltbox will install.
+    15. Rclone version that Saltbox will install.
 
         Valid options are **latest**, **beta** or a specific version "**1.55**".
 
         If specifying a version make sure to quote it as Ansible will convert the value into a float otherwise.
 
-    14. Shell used by the system. Valid options are bash or zsh.
+    16. Shell used by the system. Valid options are bash or zsh.
 
-    15. Folder used for temporary transcode files.
+    17. Folder used for temporary transcode files.
 
 === "adv_settings.yml"
 
@@ -326,7 +356,7 @@ To edit any of the following configuration files use the command written in the 
 
     9. Toggles whether Traefik is configured to use HTTP-01 certificate validation.
 
-        This toggle is only useful for those using any of the support DNS validation methods as this will be enabled by default otherwise.
+        This toggle is only useful for those using any of the supported DNS validation methods as this will be enabled by default otherwise.
 
     10. Toggles whether certificates will be issued by ZeroSSL instead of Let's Encrypt.
 
@@ -379,7 +409,7 @@ If your server did not need to reboot you can run `su username` to switch user o
 
     TO BE PERFECTLY CLEAR: FORGET THAT THE ROOT USER EXISTS.  DO NOT LOG INTO YOUR SALTBOX MACHINE AS ROOT ANY MORE.
 
-    IF YOU THINK THIS DOESN"T APPLY TO YOU, THINK HARD ABOUT WHY YOU HAVE THAT IMPRESSION.  ALMOST CERTAINLY YOU ARE MISTAKEN.
+    IF YOU THINK THIS DOESN'T APPLY TO YOU, THINK HARD ABOUT WHY YOU HAVE THAT IMPRESSION.  ALMOST CERTAINLY YOU ARE MISTAKEN.
 
 !!! info
     THIS IS AN OPTIONAL STEP, required only if you plan to use cloud storage [Google Drive, for instance]
@@ -469,13 +499,15 @@ Once you have set up your rclone remote[s], enter their details in `settings.yml
 
 ## Step 5: Saltbox
 
+!!! info
+    You must run at least `core` prior to *any other* Saltbox tag; if you run any other tag prior to running `core`, you will see a variety of odd errors.  You need to run one of these options as shown below before moving on or installing any other tags/apps.
+
 !!! warning
     Have you either disabled rclone OR set up your remotes in both `rclone config` and `settings.yml`?  If not, go back and fix that.
 
 If you are installing a [Feederbox/Mediabox setup](../basics/install_types.md) [if your reaction to this question is "huh?" then you are not, and should probably use the `saltbox` install], set up the Feederbox first, then add the [feeder mount](../../advanced/feeder.md) to the mediabox prior to install.
 
-!!! warning
-    You must run at least `core` prior to any other Saltbox tag; if you run any other tag prior to running `core`, you will see a variety of odd errors.  You need to run one of these options as shown below before moving on or installing any other tags.
+You can get a list of available install tags with `sb list`.
 
 === "Saltbox"
 

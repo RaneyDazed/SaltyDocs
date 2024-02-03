@@ -10,6 +10,8 @@ On this page, we break down the options available in the following files:
 - `/srv/git/saltbox/settings.yml`
 - `/srv/git/saltbox/adv_settings.yml`
 
+IMPORTANT: If you make changes to values in these files, you will have to run the relevant role[s] to make them take effect.  For example, if you change traefik-related settings, you will need to rerun the traefik tag for them to take effect.  The only thing that looks at these settings files is the Ansible script.
+
 ## Options in accounts.yml
 
 **Note**: There must always be a space between the key and the value in YAML files.  `key: value` NOT `key:value`
@@ -175,16 +177,19 @@ Each tab shows a "section" in the file.
 === "rclone"
     ```yaml
     rclone:
-      enabled: true
+      enabled: yes
       remotes:
         - remote: google
-          template: google
-          upload: true
-          upload_from: /mnt/local/Media
-          vfs_cache:
-            enabled: false
-            max_age: 504h
-            size: 50G
+          settings:
+            mount: yes
+            template: google
+            union: yes
+            upload: yes
+            upload_from: /mnt/local/Media
+            vfs_cache:
+              enabled: no
+              max_age: 504h
+              size: 50G
       version: latest
     ```
 
@@ -194,32 +199,42 @@ Each tab shows a "section" in the file.
 
     ```yaml
     rclone:
-      enabled: true
+      enabled: yes
       remotes:
         - remote: google
-          template: google
+          settings:
+            mount: yes
+            template: google
           ...
         - remote: dropbox
-          template: dropbox
+          settings:
+            mount: no
+            template: dropbox
           ...
         - remote: minio
-          template: /opt/mount-templates/custom/myminio.j2
+          settings:
+            mount: yes
+            template: /opt/mount-templates/custom/myminio.j2
           ...
     ```
 
-    `remotes/remote`: The name of the rclone remote for this mount. You can also specify a path to use for the remote. `remote: "google:Media"` quotes are important.
+    `remotes/remote`: The name of the rclone remote for this mount. You can also specify a path to use for the remote. `remote: "google:Media"` or `remote: "my-sftp:/path/to/my/files"`  Quotes are important.
 
-    `remotes/template`: The name of the template you want to use for the mount.  Currently Saltbox supports 4 options: `google`, `dropbox`, `sftp` and a path to a file ("/opt/mount-templates/remote.j2") containing either jinja2 template or an actual copy of a systemd service file. A [community repo](https://github.com/saltyorg/mount-templates) is maintained of user submitted mount options which can be referenced via path (i.e. `/opt/mount-templates/generic.j2`.) We recommend saving your own custom templates/services in `/opt/mount-templates/custom` to ensure they are backed up and not subject to being overwritten by the repo.
+    `remotes/settings/mount`: Toggles whether you want this remote mounted in the file system.
 
-    `remotes/upload`: Toggles whether you intend to upload to this remote using Cloudplow.
+    `remotes/settings/template`: The name of the template you want to use for the mount.  Currently Saltbox supports 4 options: `google`, `dropbox`, `sftp` and a path to a file ("/opt/mount-templates/remote.j2") containing either jinja2 template or an actual copy of a systemd service file. A [community repo](https://github.com/saltyorg/mount-templates) is maintained of user submitted mount options which can be referenced via path (i.e. `/opt/mount-templates/generic.j2`.) We recommend saving your own custom templates/services in `/opt/mount-templates/custom` to ensure they are backed up and not subject to being overwritten by the repo.
 
-    `remotes/upload_from`: The local path Cloudplow will use to upload from if the remote was upload enabled.
+    `remotes/settings/union`: Toggles whether you want to add this remote mount to `/mnt/unionfs`.  This requires that `mount` be enabled.
 
-    `remotes/vfs_cache/enabled`: Toggle for using Rclone VFS file cache.
+    `remotes/settings/upload`: Toggles whether you intend to upload to this remote using Cloudplow.
 
-    `remotes/vfs_cache/max_age`: Defines the max age of files in the cache.
+    `remotes/settings/upload_from`: The local path Cloudplow will use to upload from if the remote was upload enabled.
 
-    `remotes/vfs_cache/size`: Defines the max size of the cache.  The cache can grow above this value in actual usage (polls the cache once a minute) so leave some headroom when using this.
+    `remotes/settings/vfs_cache/enabled`: Toggle for using Rclone VFS file cache.
+
+    `remotes/settings/vfs_cache/max_age`: Defines the max age of files in the cache.
+
+    `remotes/settings/vfs_cache/size`: Defines the max size of the cache.  The cache can grow above this value in actual usage (polls the cache once a minute) so leave some headroom when using this.
         
     `version`: Rclone version that is installed by Saltbox.
     Choices are `latest`, `current`, `beta`, or a specific version number (e.g. `1.42`).
