@@ -2,13 +2,13 @@
 
 ## What is it?
 
-[qBittorrent](https://www.qbittorrent.org/){: target=_blank rel="noopener noreferrer" } is a bittorrent client programmed in C++ / Qt that uses libtorrent (sometimes called libtorrent-rasterbar) by Arvid Norberg.
+[qBittorrent](https://www.qbittorrent.org/) is a bittorrent client programmed in C++ / Qt that uses libtorrent (sometimes called libtorrent-rasterbar) by Arvid Norberg.
 
 It aims to be a good alternative to all other bittorrent clients out there. qBittorrent is fast, stable and provides unicode support as well as many features.
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://www.qbittorrent.org/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://github.com/qbittorrent/qBittorrent/wiki){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/qbittorrent/qBittorrent){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/saltydk/qbittorrent){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://www.qbittorrent.org/){: .header-icons } | [:octicons-link-16: Docs](https://github.com/qbittorrent/qBittorrent/wiki){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/qbittorrent/qBittorrent){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/saltydk/qbittorrent){: .header-icons }|
 
 ### 1. Installation
 
@@ -26,12 +26,9 @@ sb install qbittorrent
 
 - Access qbittorrent at `https://qbittorrent._yourdomain.com_`
 
-``` { .yaml }
-      username: `admin`
-      password: `adminadmin`.
-```
+- Log in using the username/password you specified in `accounts.yml`
 
-- **First** go to `Options` -> `Web UI` and set a new username and a strong password.
+- **OPTIONALLY** go to `Options` -> `Web UI` and set a new username and a strong password.
 
     ![Authentication Section Screenshot](../images/community/qbit_auth.png)
 
@@ -58,7 +55,7 @@ sb install qbittorrent
 !!! Warning
       Make sure to choose a strong username/password combination because by default qBittorrent's Web API is completely exposed to the internet!  
       If someone guesses your qBit's credentials, they can, among other things, steal your tracker passkeys and delete torrents (data included).  
-      If you don't need the API endpoints exposed, you can disable them using the [inventory system](/saltbox/inventory/) with
+      If you don't need the API endpoints exposed, you can disable them using the [inventory system](../saltbox/inventory/index.md) with
 
       ``` { .yaml }
       qbittorrent_traefik_api_enabled: false
@@ -70,4 +67,8 @@ sb install qbittorrent
 !!! Note
       if you're using private trackers be sure to go to `Options` -> `BitTorrent` and uncheck everything in Privacy section.
 
-- [:octicons-link-16: Documentation](https://github.com/qbittorrent/qBittorrent/wiki){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation](https://github.com/qbittorrent/qBittorrent/wiki){: .header-icons }
+
+## 4. Next
+
+Are you setting Saltbox up for the first time?  Continue to [NZBHydra2](nzbhydra2.md).

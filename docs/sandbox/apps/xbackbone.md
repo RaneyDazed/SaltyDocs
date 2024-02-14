@@ -4,11 +4,11 @@
 
 ## What is it?
 
-[xbackbone](https://xbackbone.url){: target=_blank rel="noopener noreferrer" } is a...
+[xbackbone](https://xbackbone.url) is a...
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://xbackbone.url){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://xbackbone.docs.url){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/xbackbone/xbackbone){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/xbackbone/xbackbone){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://xbackbone.url){: .header-icons } | [:octicons-link-16: Docs](https://xbackbone.docs.url){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/xbackbone/xbackbone){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/xbackbone/xbackbone){: .header-icons }|
 
 ### 1. Installation
 

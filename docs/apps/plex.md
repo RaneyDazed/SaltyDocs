@@ -4,7 +4,7 @@
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://plex.tv/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://support.plex.tv/articles/){: .header-icons target=_blank rel="noopener noreferrer" } | :octicons-mark-github-16: Github | [:material-docker: Docker](https://hub.docker.com/r/plexinc/pms-docker){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://plex.tv/){: .header-icons } | [:octicons-link-16: Docs](https://support.plex.tv/articles/){: .header-icons } | :octicons-mark-github-16: Github | [:material-docker: Docker](https://hub.docker.com/r/plexinc/pms-docker){: .header-icons }|
 
 ## URL
 
@@ -133,6 +133,17 @@
 
             ![](../images/plex-media-server/plex-11-schedule.jpeg)
 
+    === "Remote Access"
+
+        1. Click the Settings icon (top right) &rightarrow; "Server" (top) &rightarrow; "Remote Access" (left).
+
+        2. Click the grey button labelled "Disable Remote Access"
+
+            - You will see a scary warning.  You are sure, so click the red "Disable" button.
+
+            ![](../images/plex-media-server/plex-11a-remote.png)
+
+
 ## Add Media Libraries
 
 In this section, we will add two libraries: one for Movies and one for TV.
@@ -213,7 +224,7 @@ _Note: If you would like to have custom Plex libraries (more than just a Movies 
 
 ## Scan Media libraries
 
-As mentioned in the [Introduction](../saltbox/basics/basics.md) page, [Autoscan](../apps/autoscan.md) will automatically scan the media files into Plex as they are downloaded, but this will require the Plex database to not be completely empty. So for every new library that is added, a one-time, manual scan is required.
+As mentioned in the [Introduction](../saltbox/basics/basics.md) page, [Autoscan](autoscan.md) will automatically scan the media files into Plex as they are downloaded, but this will require the Plex database to not be completely empty. So for every new library that is added, a one-time, manual scan is required.
 
 To do so:
 
@@ -227,15 +238,20 @@ To do so:
 
 ## Webtools
 
-Webtools for Plex comes preinstalled. If you wish to setup Webtools and install 3rd party add-ons, you can go to `https://plex-webtools._yourdomain.com_` and log in with your Plex account.
+If you want to install Webtools for Plex, set:
+
+```
+plex_plugin_webtools: true
+```
+
+in the inventory and run [or rerun] the `plex` tag:
+
+```
+sb install plex
+```
+
+To set up Webtools and install 3rd party add-ons, go to `https://plex-webtools._yourdomain.com_` and log in with your Plex account.
 
 ## Next
 
-Are you setting Saltbox up for the first time?  Continue to [Autoscan](../autoscan/).
-4. [Sonarr](../../apps/sonarr)
-5. [Radarr](../../apps/radarr)
-6. [Lidarr](../../apps/lidarr)
-7. [Tautulli](../../apps/tautulli)
-8. [Overseerr](../../apps/overseerr)
-9. [Portainer](../../apps/portainer)
-10. [Organizr](../../apps/organizr)
+Are you setting Saltbox up for the first time?  Continue to [Autoscan](autoscan.md).

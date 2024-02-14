@@ -2,11 +2,11 @@
 
 ## What is it?
 
-[SQLite Browser](https://sqlitebrowser.org/){: target=_blank rel="noopener noreferrer" } is a high quality, visual, open source tool to create, design, and edit database files compatible with SQLite.
+[SQLite Browser](https://sqlitebrowser.org/) is a high quality, visual, open source tool to create, design, and edit database files compatible with SQLite.
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://sqlitebrowser.org/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://github.com/sqlitebrowser/sqlitebrowser/wiki){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/sqlitebrowser/sqlitebrowser){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/linuxserver/sqlitebrowser){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://sqlitebrowser.org/){: .header-icons } | [:octicons-link-16: Docs](https://github.com/sqlitebrowser/sqlitebrowser/wiki){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/sqlitebrowser/sqlitebrowser){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/linuxserver/sqlitebrowser){: .header-icons }|
 
 ### 1. Installation
 
@@ -24,4 +24,4 @@ sb install sandbox-sqlitebrowser
 
 ### 3. Setup
 
-- [:octicons-link-16: Documentation: SQLite Browser Docs](https://github.com/sqlitebrowser/sqlitebrowser/wiki){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation: SQLite Browser Docs](https://github.com/sqlitebrowser/sqlitebrowser/wiki){: .header-icons }

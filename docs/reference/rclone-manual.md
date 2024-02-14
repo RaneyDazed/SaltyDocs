@@ -1,7 +1,7 @@
 # Rclone
 
 <script>
-   document.addEventListener("DOMContentLoaded", function(){
+   document$.subscribe(function() {
     var length           = 10;
     var result           = '';
     var characters       = 'abcdefghijklmnopqrstuvwxyz';
@@ -26,7 +26,19 @@ The guide below assumes you are using Google Drive.
 
 Further, it is assuming you are starting from nothing; a new Google account with no existing media on Google Drive.
 
+!!! info
+    IMPORTANT: This guide was written *before* Google began cracking down on storage usage on workspace accounts; it's assuming that you have effectively unlimited storage.  Now that this is not the case, you should evaluate whether you actually need or want to go through this for little to no benefit generally.
+    
+    This process creates 300 service accounts and multiple Google projects to enable you to upload more than 750Gb per day; now that the total storage available to workspace accounts is in the tens of TB, this is not as important or useful as it used to be.
+
+    This process creates multiple shared drives to help you avoid hitting file-count limitations; again, now that the total storage available to workspace accounts is in the tens of TB, this is not as important or useful as it used to be, as you're unlikely to have hundreds of thousands of files.
+
+    Take the time to consider whether this process holds value for you.
+
+
 THIS PROCESS IS OPTIONAL.  THIS IS NOT A REQUIRED PART OF THE SALTBOX INSTALL.
+
+IF YOU ARE USING A BACKEND OTHER THAN GOOGLE DRIVE [say, Dropbox], THIS DOES NOT APPLY TO YOU.
 
 Rclone supports many cloud provider backends, but the only one routinely used by the Saltbox team is Google Drive.
 
@@ -39,7 +51,7 @@ It also assumes you are using a [Google Workspace](https://workspace.google.com/
 
 If you already have Rclone configured, you can jump directly to the [relevant section](#existing-rclone-setup).
 
-If you already have media on Google Drive [My Drive OR Shared Drives] from your time with Cloudbox or PlexGuide or the like, you DO NOT WANT TO DO THIS.  This process is assuming you are starting from scratch without any of this already set up.  It will overwrite aspects of an existing rclone setup with no undo.
+If you already have media on Google Drive [My Drive OR Shared Drives] from your time with Cloudbox or the like, you DO NOT WANT TO DO THIS.  This process is assuming you are starting from scratch without any of this already set up.  It will overwrite aspects of an existing rclone setup with no undo.
 
 That said, let's proceed.
 
@@ -48,8 +60,10 @@ That said, let's proceed.
 !!! warning
     YOU CANNOT SKIP STEPS HERE: EACH OF THESE STEPS IS ASSUMING YOU HAVE PERFORMED THE PREVIOUS ONE.
 
+
 !!! info
     IF YOU HAVE EXISTING GOOGLE DRIVES FROM ANOTHER CONTEXT [Cloudbox, PG, etc] USE THAT CONFIG [NOTABLY THE RCLONE CONFIG AND ANY SERVICE ACCOUNTS] IN A MIGRATION.
+
 
 !!! warning
     THIS PROCESS DOES NOT ACCOUNT FOR USING YOUR OWN TEAMDRIVES.
@@ -180,7 +194,7 @@ The "saltbox install" is the full installation of saltbox using `sb install salt
 
 You will still be limited to the 750GB/day Google upload limit until you configure cloudplow to upload directly to the individual shared drives.  Eventually this will be automated, but for now there is [this guide](cloudplow-config.md).  The script described there operates on the default cloudplow config file, which does not exist yet if you are going through this for the first time.
 
-For now, go [back to the install process](../../saltbox/install/install/#step-5-saltbox).
+For now, go [back to the install process](../saltbox/install/install.md#step-5-saltbox).
 
 ## Existing Rclone Setup
 
@@ -226,7 +240,7 @@ To rename the Google Drive remote to `google`:
    cp -n $(rclone config file | tail -n 1) ~/.config/rclone/rclone.conf
    ```
 
-1. Give it the proper ownership and permissions. Replace `user` and `group` to match yours (see [here](../../faq/System#find-your-user-id-uid-and-group-id-gid)):
+1. Give it the proper ownership and permissions. Replace `user` and `group` to match yours (see [here](../faq/System.md#find-your-user-id-uid-and-group-id-gid)):
 
    ```shell
    sudo chown user:group ~/.config/rclone/rclone.conf

@@ -4,7 +4,7 @@
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](http://tautulli.com){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://github.com/Tautulli/Tautulli/wiki){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/Tautulli/Tautulli){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/hotio/tautulli){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](http://tautulli.com){: .header-icons } | [:octicons-link-16: Docs](https://github.com/Tautulli/Tautulli/wiki){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/Tautulli/Tautulli){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/hotio/tautulli){: .header-icons }|
 
 ## 2. URL
 
@@ -53,14 +53,10 @@ To access Tautulli, visit `https://tautulli._yourdomain_.com`
 
     ![](../images/tautulli/08-tautulli-web.png)
 
-3. Click "Plex Media Server" on the left. Click "Show Advanced" at the top. Under "Logs Folder", type in `/logs`. Now you can click `Save`. Also verify 'Use SSL' and 'Remote Server` are unchecked.
-
-    ![](../images/tautulli/09-tautulli-plex.png)
-
-4. On the "Restart" popup window, click `Restart`.
+3. On the "Restart" popup window, click `Restart`.
 
     ![](../images/tautulli/10-tautulli-reboot.png)
 
 ## 5. Next
 
-Are you setting Saltbox up for the first time?  Continue to [Overseerr](../overseerr/).
+Are you setting Saltbox up for the first time?  Continue to [Overseerr](overseerr.md).

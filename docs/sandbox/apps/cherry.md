@@ -2,7 +2,7 @@
 
 ## What is it?
 
-[Cherry](https://cherry.haishan.me/){: target=_blank rel="noopener noreferrer" } is a bookmark service that is open source.
+[Cherry](https://cherry.haishan.me/) is a bookmark service that is open source.
 
 - The code of Cherry service and the browser extension are all available on GitHub.
 
@@ -15,7 +15,7 @@
 
 | Details     |             |             |
 |-------------|-------------|-------------|
-| [:material-home: Project home](https://cherry.haishan.me/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://cherry.haishan.me/docs/intro){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/haishanh/cherry){: .header-icons target=_blank rel="noopener noreferrer" } |
+| [:material-home: Project home](https://cherry.haishan.me/){: .header-icons } | [:octicons-link-16: Docs](https://cherry.haishan.me/docs/intro){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/haishanh/cherry){: .header-icons } |
 
 ### 1. Installation
 
@@ -41,4 +41,4 @@ sb install sandbox-cherry
 !!!note
     To create an additional user, use Cherry cli: `docker exec cherry cherry create-user <email> <password>`
 
-- [:octicons-link-16: Documentation: Cherry Docs](https://cherry.haishan.me/docs/intro){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation: Cherry Docs](https://cherry.haishan.me/docs/intro){: .header-icons }

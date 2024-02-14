@@ -2,7 +2,7 @@
 
 ## What is it?
 
-[Wikijs](https://js.wiki/){: target=_blank rel="noopener noreferrer" } is a modern, lightweight and powerful wiki app built on NodeJS.
+[Wikijs](https://js.wiki/) is a modern, lightweight and powerful wiki app built on NodeJS.
 
 - Manage all aspects of your wiki using the extensive and intuitive admin area.
 - Fully customize the appearance of your wiki, including a light and dark mode.
@@ -13,7 +13,7 @@
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://js.wiki/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://docs.requarks.io/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/requarks/wiki){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/requarks/wiki){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://js.wiki/){: .header-icons } | [:octicons-link-16: Docs](https://docs.requarks.io/){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/requarks/wiki){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/requarks/wiki){: .header-icons }|
 
 ### 1. Installation
 
@@ -30,6 +30,6 @@ sb install sandbox-wikijs
 ### 3. Setup
 
 !!!info
-   📢 No default user is configured until you run through the setup screen, so you should ideally run through setup as soon as wordpress is deployed to secure the site. It is not behind authelia by default.
+    📢 No default user is configured until you run through the setup screen, so you should ideally run through setup as soon as the container is deployed to secure the site. It is not behind authelia by default.
 
-- [:octicons-link-16: Documentation: Wikijs Docs](https://docs.requarks.io/){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation: Wikijs Docs](https://docs.requarks.io/){: .header-icons }

@@ -2,7 +2,7 @@
 
 ## What is it?
 
-[Homarr](https://www.homarr.dev/){: target=_blank rel="noopener noreferrer" } is a simple and modern homepage for your server that helps you access all of your services in one place. It integrates with the services you use to display useful information or control them. It's easy to install and supports many different devices.
+[Homarr](https://www.homarr.dev/) is a simple and modern homepage for your server that helps you access all of your services in one place. It integrates with the services you use to display useful information or control them. It's easy to install and supports many different devices.
 
 - Integrates with services you use.
 - Search the web directly from your homepage.
@@ -16,7 +16,7 @@
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://homarr.dev/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://homarr.dev/docs/introduction/manage-services){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/ajnart/homarr){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/ajnart/homarr/){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://homarr.dev/){: .header-icons } | [:octicons-link-16: Docs](https://homarr.dev/docs/introduction/manage-services){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/ajnart/homarr){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/ajnart/homarr/){: .header-icons }|
 
 Recommended install types: Saltbox, Core
 
@@ -42,4 +42,4 @@ sb install sandbox-homarr
 
   ```
 
-- [:octicons-link-16: Documentation: Homarr Docs](https://homarr.dev/docs/integrations/){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation: Homarr Docs](https://homarr.dev/docs/integrations/){: .header-icons }

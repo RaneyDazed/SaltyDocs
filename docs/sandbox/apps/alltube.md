@@ -2,11 +2,11 @@
 
 ## What is it?
 
-[AllTube](http://alltubedownload.net/){: target=_blank rel="noopener noreferrer" } is an HTML GUI for youtube-dl supporting [a wide range of websites](https://alltubedownload.net/extractors){: target=_blank rel="noopener noreferrer" }.
+[AllTube](http://alltubedownload.net/) is an HTML GUI for youtube-dl supporting [a wide range of websites](https://alltubedownload.net/extractors).
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://github.com/Rudloff/alltube){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://github.com/Rudloff/alltube){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/Rudloff/alltube){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/rudloff/alltube){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://github.com/Rudloff/alltube){: .header-icons } | [:octicons-link-16: Docs](https://github.com/Rudloff/alltube){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/Rudloff/alltube){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/rudloff/alltube){: .header-icons }|
 
 ### 1. Installation
 
@@ -22,4 +22,4 @@ sb install sandbox-alltube
 
 ### 3. Setup
 
-- [:octicons-link-16: Documentation](https://github.com/Rudloff/alltube){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation](https://github.com/Rudloff/alltube){: .header-icons }

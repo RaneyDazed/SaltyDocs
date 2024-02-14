@@ -2,11 +2,11 @@
 
 ## What is it?
 
-[Miniflux](https://miniflux.app){: target=_blank rel="noopener noreferrer" } is a minimalist and opinionated feed reader.
+[Miniflux](https://miniflux.app) is a minimalist and opinionated feed reader.
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://miniflux.app){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://github.com/miniflux/v2){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/miniflux/v2){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://registry.hub.docker.com/r/miniflux/miniflux){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://miniflux.app){: .header-icons } | [:octicons-link-16: Docs](https://github.com/miniflux/v2){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/miniflux/v2){: .header-icons } | [:material-docker: Docker](https://registry.hub.docker.com/r/miniflux/miniflux){: .header-icons }|
 
 ### 1. Installation
 
@@ -22,4 +22,4 @@ sb install sandbox-miniflux
 
 ### 3. Setup
 
-- [:octicons-link-16: Documentation](https://miniflux.app){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation](https://miniflux.app){: .header-icons }

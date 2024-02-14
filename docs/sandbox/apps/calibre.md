@@ -2,11 +2,11 @@
 
 ## What is it?
 
-[Calibre](https://calibre-ebook.com/){: target=_blank rel="noopener noreferrer" } is a powerful and easy to use e-book manager. Users say it’s outstanding and a must-have. It’ll allow you to do nearly everything and it takes things a step beyond normal e-book software. It’s also completely free and open source and great for both casual users and computer experts.
+[Calibre](https://calibre-ebook.com/) is a powerful and easy to use e-book manager. Users say it’s outstanding and a must-have. It’ll allow you to do nearly everything and it takes things a step beyond normal e-book software. It’s also completely free and open source and great for both casual users and computer experts.
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://calibre-ebook.com/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://manual.calibre-ebook.com/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](GITHUBLINK){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://registry.hub.docker.com/r/linuxserver/calibre){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://calibre-ebook.com/){: .header-icons } | [:octicons-link-16: Docs](https://manual.calibre-ebook.com/){: .header-icons } |  | [:material-docker: Docker](https://registry.hub.docker.com/r/linuxserver/calibre){: .header-icons }|
 
 ### 1. Installation
 
@@ -22,7 +22,7 @@ sb install sandbox-calibre
 
 ### 3. Setup
 
-- The username is `abc` . The configured password is taken from your Saltbox [`accounts.yml`](../../../saltbox/install/install/#configuration) file located in `/srv/git/saltbox/accounts.yml`
+- The username is `abc` . The configured password is taken from your Saltbox [`accounts.yml`](../../saltbox/install/install.md#configuration) file located in `/srv/git/saltbox/accounts.yml`
 
 - Calibre is ready for use. If you added your pre-existing Calibre library to /mnt/local/Media/Books then you should see your library is ready to go. If not, then you have a blank library ready for you to fill.
 
@@ -49,4 +49,4 @@ You can access advanced features of the Guacamole remote desktop using ctrl+alt+
 - Image version number: <br />
   `docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/calibre`
 
-- [:octicons-link-16: Documentation](https://manual.calibre-ebook.com/){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation](https://manual.calibre-ebook.com/){: .header-icons }

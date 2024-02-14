@@ -4,6 +4,10 @@
 
 Usually this is a simple problem, but there are several places where it could be.
 
+NOTE: THIS IS WRITTEN IN TERMS OF GOOGLE DRIVE, BUT THE CONCEPTS ARE APPLICABLE TO ANY RCLONE-BASED STORAGE.
+
+Service names and directories may differ depending on the specific configuration in use.  You may have multi-layer remotes in the case of encryption or chunking.  None of those things affect the concepts of: remote[s] -> mounts -> unionfs -> apps.
+
 There are several layers between your Google Drive and Plex [or other app].
 
 - rclone remote, which provides the link to your Google Drive.  This is where you sign into your Google account.
@@ -22,11 +26,11 @@ I’m further assuming that you are using the default file structure as suggeste
 
 See the end of this doc for some notes on how to tell if 1 and 2 are true.
 
+Saltbox uses a configuration-driven managed setup for these service files, so these files are all generated for you under standard names.
+
 <span style="color: red;">MY FOLDERS AND FILES IN THESE SCREENSHOTS WILL NOT MATCH YOURS.  THAT’S FINE AND EXPECTED.</span>
 
-When I refer to a shell command throughout, you’re typing the part highlighted in blue and looking for the part highlighted in orange.
-
-In most cases, running the mounts tag will clear up any problems you may be having with the various auto-generated service files.
+In most cases, running the mounts tag will clear up any problems you may be having with the various auto-generated service files; they will all be regenerated using information from `settings.yml`.
 
 ```shell
 sb install mounts
@@ -38,18 +42,32 @@ The df command can give you a quick look at things:
 
 ```text
 ➜  ~ df -h
-Filesystem   Size   Used  Avail  Use%  Mounted on
+Filesystem           Size   Used  Avail  Use%  Mounted on
 ...
-local:remote  6.1P  107T   224G  100%  /mnt/unionfs
-google:       1.0P  107T   1.0P   10%  /mnt/remote
+local:remote/google  6.1P  107T   224G  100%  /mnt/unionfs
+google:              1.0P  107T   1.0P   10%  /mnt/remote/google
 ➜  ~
 ```
 
-That shows a device called “google” [created by rclone config] mounted at `/mnt/remote` [done by rclone_vfs.service], and then two directories [local and remote, which are both inside the /mnt directory] combined into `/mnt/unionfs` [that’s done by mergerfs.service]
+That shows a device called “google” [created by rclone config] mounted at `/mnt/remote/google` [done by saltbox_managed_rclone_google.service], 
+```
+google:              1.0P  107T   1.0P   10%  /mnt/remote
+```
+and then two directories [local and remote/google, which are both inside the /mnt directory] combined into `/mnt/unionfs` [that’s done by saltbox_managed_mergerfs.service]
+```
+local:remote/google  6.1P  107T   224G  100%  /mnt/unionfs
+```
 
 If this looks good, your problem is most likely in the bind mounts within the containers.
 
-Now we’ll step through the various layers involved in this and check them one at a time.
+There are four layers between cloud storage and the apps:
+
+1. rclone remote
+2. rclone_vfs mount of that remote at `/mnt/remote`
+3. mergerfs of that remote to `/mnt/unionfs`
+4. mapping of volumes into the container
+
+We’ll step through the various layers involved in this and check them one at a time.
 
 ## rclone remote
 
@@ -78,11 +96,30 @@ You should be able to get a file listing from that remote:
 ➜  ~
 ```
 
-That file listing should match what’s displayed on the Google Drive website.  If you've used the Saltbox scripted setup, those directories witll be spread across the three shared drives that get created.
+That file listing should match what’s displayed on the Google Drive website.  If you've used the Saltbox scripted setup, those directories witll be spread across the multiple shared drives that get created.
 
 Yours will probably contain “Movies” and “TV”.
 
-If it doesn’t, step one is to fix that.  Recreate or edit that `google:` rclone remote until the file listings match.  If you've used the Saltbox scripted setup, examine the three shared drive remotes; the `google` remote is just a union of those.
+If it doesn’t match what’s displayed on the Google Drive website, step one is to fix that.  Recreate or edit that `google:` rclone remote until the file listings match.  If you've used the Saltbox scripted setup, examine the shared drive remotes; the `google` remote is just a union of those.
+
+Verify the contents of `settings.yml`: saltbox uses this to create the mount services.  In this example case, it should look something like this:
+
+```yaml
+   remotes:
+    - remote: google   # this is the name of the rclone remote
+        settings:
+          mount: yes
+          template: google # this is the saltbox template
+          union: yes
+          upload: yes
+          upload_from: /mnt/local/Media
+          vfs_cache:
+            enabled: no
+            max_age: 504h
+            size: 50G
+```
+
+If you have to change those settings, rerun the `mounts` tag and go through this section again.
 
 Do not continue until those two file listings match.  They won’t match mine; they should both show the same files from YOUR gdrive.
 
@@ -93,14 +130,14 @@ Now that the rclone remote is known good, let’s move to the next layer, the rc
 First, let’s check that the service is running:
 
 ```text
-➜  ~ sudo systemctl status rclone_vfs.service
-● rclone_vfs.service - Rclone VFS Mount
-   Loaded: loaded (/etc/systemd/system/rclone_vfs.service; enabled; vendor preset: enabled)
+➜  ~ sudo systemctl status saltbox_managed_rclone_google.service
+● saltbox_managed_rclone_google.service - Rclone VFS Mount
+   Loaded: loaded (/etc/systemd/system/saltbox_managed_rclone_google.service; enabled; vendor preset: enabled)
    Active: active (running) since Sat 2019-11-02 06:45:34 EET; 10h ago
   Process: 1053 ExecStartPre=/bin/sleep 10 (code=exited, status=0/SUCCESS)
  Main PID: 1247 (rclone)
  Tasks: 23 (limit: 4915)
-   CGroup: /system.slice/rclone_vfs.service
+   CGroup: /system.slice/saltbox_managed_rclone_google.service
         └─1247 /usr/bin/rclone mount --config=/home/seed/.config/rclone/rclone.conf --user-agent . . .
 
 Nov 02 06:45:24 Ubuntu-1804-bionic-64-minimal systemd[1]: Starting Rclone VFS Mount...
@@ -113,12 +150,12 @@ You want to see “`active (running)`” there.
 You can look at the log to find out what’s wrong if it’s not “`active (running)`”
 
 ```text
-➜  ~ sudo journalctl -fu rclone_vfs.service
+➜  ~ sudo journalctl -fu saltbox_managed_rclone_google.service
 -- Logs begin at Mon 2019-08-05 16:56:44 EEST. --
 Nov 02 06:42:44 Ubuntu-1804-bionic-64-minimal rclone[9625]: Serving remote control on http://127.0.0.1:5572/
 Nov 02 06:42:44 Ubuntu-1804-bionic-64-minimal systemd[1]: Started Rclone VFS Mount.
 Nov 02 06:44:09 Ubuntu-1804-bionic-64-minimal systemd[1]: Stopping Rclone VFS Mount...
-Nov 02 06:44:09 Ubuntu-1804-bionic-64-minimal rclone[9625]: Fatal error: failed to umount FUSE fs: exit status 1: fusermount: entry for /mnt/remote not found in /etc/mtab
+Nov 02 06:44:09 Ubuntu-1804-bionic-64-minimal rclone[9625]: Fatal error: failed to umount FUSE fs: exit status 1: fusermount: entry for /mnt/remote/google not found in /etc/mtab
 Nov 02 06:44:09 Ubuntu-1804-bionic-64-minimal systemd[1]: rclone_vfs.service: Main process exited, code=exited, status=1/FAILURE
 Nov 02 06:44:09 Ubuntu-1804-bionic-64-minimal systemd[1]: rclone_vfs.service: Failed with result 'exit-code'.
 Nov 02 06:44:09 Ubuntu-1804-bionic-64-minimal systemd[1]: Stopped Rclone VFS Mount.
@@ -129,11 +166,14 @@ Nov 02 06:45:34 Ubuntu-1804-bionic-64-minimal systemd[1]: Started Rclone VFS Mou
 ```
 
 In that log you can see an error from last night when my server ran out of disk space, the rclone_vfs service died, then a reboot [after clearing space]  and it came back up.
+```
+Nov 02 06:44:09 Ubuntu-1804-bionic-64-minimal rclone[9625]: Fatal error: failed to umount FUSE fs: exit status 1: fusermount: entry for /mnt/remote/google not found in /etc/mtab
+```
 
 If there are errors there, first try restarting the service:
 
 ```shell
-sudo systemctl restart rclone_vfs
+sudo systemctl restart saltbox_managed_rclone_google
 ```
 
 If that doesn’t get you to an “`active (running)`” state, try a reboot of the machine.
@@ -145,17 +185,23 @@ Now that the service is running, let’s make sure the files are showing up wher
 You can extract the location where the rclone_vfs service is mounting your google storage with a quick egrep command:
 
 ```text
-➜  ~ egrep -i -e "/mnt/" /etc/systemd/system/rclone_vfs.service
-  google: /mnt/remote
-ExecStop=/bin/fusermount -uz /mnt/remote
+➜  ~ egrep -i -e "/mnt/" /etc/systemd/system/saltbox_managed_rclone_google.service
+  google: /mnt/remote/google
+ExecStop=/bin/fusermount -uz /mnt/remote/google
 ```
 
-You can see in that output that rclone_vfs is mounting your google: remote at /mnt/remote.
-
+You can see in that output that rclone_vfs is mounting your google: remote at /mnt/remote/google.
+```
+  google: /mnt/remote/google
+  ^       ^
+  mount   in this location
+  this
+  remote
+```
 That means that the content of your google drive should also appear at that location.  Let’s check that:
 
 ```text
-➜  ~ ls -al /mnt/remote/Media
+➜  ~ ls -al /mnt/remote/google/Media
 total 0
 drwxrwxr-x 1 seed seed 0 Dec  1  2018 Music
 drwxrwxr-x 1 seed seed 0 Mar 15  2019 Movies
@@ -163,9 +209,9 @@ drwxrwxr-x 1 seed seed 0 Dec  1  2018 TV
 ➜  ~
 ```
 
-Note that that matches the file listing from the Google Drive web UI above.
+Note that that should match the file listing from the Google Drive web UI above.
 
-If it doesn’t, there’s a problem running the rclone_vfs.service.  Perhaps try running the mounts tag.
+If it doesn’t, there’s a problem running the saltbox_managed_rclone_google.service.  Perhaps try running the mounts tag.
 
 Do not continue until those two file listings match.  They won’t match mine; they should both show the same files from YOUR gdrive.
 
@@ -178,13 +224,13 @@ The next step is the mergerfs mount where all the apps look for your files.
 Just like we did with the rclone_vfs service, check the mergerfs status:
 
 ```text
-➜  ~ sudo systemctl status mergerfs.service
-● mergerfs.service - MergerFS Mount
-   Loaded: loaded (/etc/systemd/system/mergerfs.service; enabled; vendor preset: enabled)
+➜  ~ sudo systemctl status saltbox_managed_mergerfs.service
+● saltbox_managed_mergerfs.service - MergerFS Mount
+   Loaded: loaded (/etc/systemd/system/saltbox_managed_mergerfs.service; enabled; vendor preset: enabled)
    Active: active (running) since Sat 2019-11-02 06:45:24 EET; 11h ago
   Process: 1034 ExecStart=/usr/bin/mergerfs -o category.create=ff,minfreespace=0,allow_other -o dropcacheonclose=true,security_capability=false,xattr=nosys -o statfs_ignore=ro,use_ino,auto_
  Tasks: 9 (limit: 4915)
-   CGroup: /system.slice/mergerfs.service
+   CGroup: /system.slice/saltbox_managed_mergerfs.service
         └─1074 /usr/bin/mergerfs -o category.create=ff,minfreespace=0,allow_other -o dropcacheonclose=true,security_capability=false,xattr=nosys -o statfs_ignore=ro,use_ino,auto_cache,um
 
 Nov 02 06:45:24 Ubuntu-1804-bionic-64-minimal systemd[1]: Starting MergerFS Mount...
@@ -194,7 +240,7 @@ Nov 02 06:45:24 Ubuntu-1804-bionic-64-minimal systemd[1]: Started MergerFS Mount
 As before, if not “`active (running)`”, you can check the mergerfs log for some clue:
 
 ```text
-➜  ~ sudo journalctl -fu mergerfs.service
+➜  ~ sudo journalctl -fu saltbox_managed_mergerfs.service
 -- Logs begin at Mon 2019-08-05 16:56:44 EEST. --
 Oct 13 17:00:11 Ubuntu-1804-bionic-64-minimal systemd[1]: Starting MergerFS Mount...
 Oct 13 17:00:11 Ubuntu-1804-bionic-64-minimal systemd[1]: Started MergerFS Mount.
@@ -345,15 +391,15 @@ Plex:
 Check the status of the services
 
 ```text
-➜  ~ service rclone_vfs status
+➜  ~ service saltbox_managed_rclone_google status
 ● rclone_vfs.service - Rclone VFS Mount
-   Loaded: loaded (/etc/systemd/system/rclone_vfs.service; enabled; vendor preset: enabled)
+   Loaded: loaded (/etc/systemd/system/saltbox_managed_rclone_google.service; enabled; vendor preset: enabled)
    Active: active (running) since Sun 2019-06-16 22:41:58 EEST; 1 day 18h ago
 …
 
-➜  ~ service mergerfs status
+➜  ~ service saltbox_managed_mergerfs status
 ● mergerfs.service - MergerFS Mount
-   Loaded: loaded (/etc/systemd/system/mergerfs.service; enabled; vendor preset: enabled)
+   Loaded: loaded (/etc/systemd/system/saltbox_managed_mergerfs.service; enabled; vendor preset: enabled)
    Active: active (running) since Sun 2019-06-16 22:41:48 EEST; 1 day 18h ago
 …
 ```
@@ -364,6 +410,6 @@ Check the filesystem behind the mounts:
 
 ```text
 ➜  ~ sudo mount | egrep "remote"
-local:remote on /mnt/unionfs type fuse.mergerfs …  <<<< Mergerfs
-google: on /mnt/remote type fuse.rclone …          <<<< RClone
+local:remote/google on /mnt/unionfs type fuse.mergerfs …  <<<< Mergerfs
+google: on /mnt/remote/google type fuse.rclone …          <<<< RClone
 ```

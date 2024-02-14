@@ -2,11 +2,11 @@
 
 ## What is it?
 
-[The Lounge](https://thelounge.chat/){: target=_blank rel="noopener noreferrer" } is a self hosted web IRC client. In private mode, The Lounge acts like a bouncer and a client combined, in order to offer an experience similar to other modern chat applications outside the IRC world. Users can then access and resume their session without being disconnected from their channels.
+[The Lounge](https://thelounge.chat/) is a self hosted web IRC client. In private mode, The Lounge acts like a bouncer and a client combined, in order to offer an experience similar to other modern chat applications outside the IRC world. Users can then access and resume their session without being disconnected from their channels.
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: The Lounge](https://thelounge.chat/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://thelounge.chat/docs){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/thelounge/thelounge ){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker:](https://docs.linuxserver.io/images/docker-thelounge){: .header-icons target=_blank rel="noopener noreferrer" } |
+| [:material-home: The Lounge](https://thelounge.chat/){: .header-icons } | [:octicons-link-16: Docs](https://thelounge.chat/docs){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/thelounge/thelounge ){: .header-icons } | [:material-docker: Docker:](https://docs.linuxserver.io/images/docker-thelounge){: .header-icons } |
 
 ### 1. Installation
 
@@ -58,4 +58,4 @@ To connect to **[znc](../../sandbox/apps/znc.md)**, you need to have a **[znc](.
 
 ![The Lounge network Screenshot](../../sandbox/images/lounge_network.png)
 
-- [:octicons-link-16: Documentation: The Lounge Docs](https://thelounge.chat/docs){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation: The Lounge Docs](https://thelounge.chat/docs){: .header-icons }

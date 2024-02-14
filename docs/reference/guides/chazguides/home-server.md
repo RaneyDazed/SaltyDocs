@@ -4,6 +4,7 @@ hide:
 tags:
   - home
   - port forward
+  - hairpin
 ---
 
 # Installing Saltbox on a home server
@@ -20,7 +21,7 @@ Prerequisites:
 
 - [Router supports port forwarding and hairpin NAT (or NAT loopback)](#router)
    Saltbox assumes that you are accessing apps via subdomains like “radarr.mydomain.com” rather than ip and port like 192.168.1.25:7878.
-   Without “hairpin NAT”, a request to “radarr.mydomain.com” from inside the network will not find its way to the proxy which does that routing.
+   Without “hairpin NAT”, a request to “radarr.mydomain.com” from inside the network will not find its way to the proxy which does that routing. [You can configure intertnal DNS in various ways to get around this, but this article is assumign the simplest path.]
 
 NOTE: None of this initial setup is Saltbox-specific. If you want to run a server on a machine behind your router and connect to it using a domain name, whether Saltbox sets it up or something else, you’ll need to do these very same things.
 
@@ -42,9 +43,15 @@ You will need to configure “dynamic DNS” to make sure that domain keeps poin
 
 When you set up a server in a data center, typically that server has a fixed unchanging IP address, so you set up DNS one time.  Most residential internet connections do not get a fixed address; your home IP will change periodically.  "Dynamic DNS" updates your DNS setup whenever your IP address changes, ensuring that "myhomeaddress.com" always points at the correct IP address.
 
-Probably your router has this available.  If not, there’s a Dynamic DNS Client role available in saltbox you can install.  If you use Cloudflare for DNS, the ddns client configuration will be automatically done for you when you run the role.
+Probably your router has this available.  If not, there’s a Dynamic DNS Client role available in saltbox you can install.  
 
-The saltbox role is `ddclient`, and you run it like any other saltbox role:
+If you use Cloudflare for DNS, use the `ddns` saltbox role and it will be configured for you.  if the `ddclient` role has been installed, remove it first.
+
+```shell
+sb install ddns
+```
+
+If you are using another DNS service, install `ddclient`, and configure it manually.  You will find the config file in `/opt/ddclient`:
 
 ```shell
 sb install ddclient
@@ -80,7 +87,7 @@ On my Netgear, they call this “Address Reservation” and it’s found under �
 
 I scroll to the end of that list, click “Add”, then choose a device and type in the address I want that thing to have.
 
-The server I’m installing Saltbox on is “random”, and I’ve assigned it 192.168.1.11.
+The server I’m installing Saltbox on is named “random”, and I’ve assigned it 192.168.1.11.  The "MAC Address" is an identifier built into the the piece of hardware; typically you'll choose that from a list of connected devices.
 
   ![](../../../images/chaz-guides/address-reservation-02.png)
 
@@ -92,11 +99,13 @@ You can see here that I’ve set it such that outside requests to port 80, 443, 
 
 Saltbox requires that ports 80 and 443 be forwarded.  All others are optional.
 
-Depending on the applications you end up installing, you may need to forward other ports.  You may not need to forward any besides 80 and 443.  You may not need to forward 22 or 3468.  This is just an example that covers the reverse proxy (80 $ 443), ssh on an alternate port (3526), and Plex-Autoscan (3468).  Your specific requirements may be different.
+Depending on the applications you end up installing, you may need to forward other ports.  You may not need to forward any besides 80 and 443.  You may not need to forward 22 or 3468.  This is just an example that covers the reverse proxy (80 & 443), ssh on an alternate port (3526), and Plex-Autoscan (3468).  Your specific requirements may be different.
+
+NOTE: Autoscan has replaced Plex-Autoscan in the default setup. Autoscan is routed through the reverse proxy and doesn't need a port-forward.
 
 Note this example assumes you have not modified either the SSH listening port or the plex-autoscan listening port on the Saltbox machine.  If you have done, then you should forward to the relevant ports instead of to 22 and 3468.
 
-Ports used by the stock saltbox apps can be found [here](https://docs.saltbox.dev/reference/ports/).
+Ports used by the stock saltbox apps can be found [here](../../ports.md).
 
 !!! warning
     If your ISP does not allow you to do this, STOP NOW.  You won’t be able to run saltbox at home.
@@ -106,7 +115,7 @@ Ports used by the stock saltbox apps can be found [here](https://docs.saltbox.de
 At this point, you should be able to SSH to that machine using your domain.
 
 ```shell
-ssh YOU@YOUR_DOMAIN -p 2207
+ssh YOU@YOUR_DOMAIN -p 3526
 ```
 
 That should work just like:
@@ -240,7 +249,7 @@ traefik : Resources | Tasks | Docker | Remove Docker Container | Remove Docker C
 nzbget : Post-Install | Wait for 10 seconds --------------------------------------------------------------- 10.25s
 plex : Resources | Tasks | Docker | Remove Docker Container | Remove Docker Container --------------------- 10.05s
 system : Populate Service Facts --------------------------------------------------------------------------- 9.70s
-rutorrent : Resources | Tasks | Docker | Remove Docker Container | Remove Docker Container ---------------- 7.45s
+qbittorrent : Resources | Tasks | Docker | Remove Docker Container | Remove Docker Container --------------- 7.45s
 ```
 
 Now I did one last log out and back in so I could access the `docker` command.

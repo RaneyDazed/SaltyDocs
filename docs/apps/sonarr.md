@@ -4,7 +4,7 @@
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://sonarr.tv/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://wiki.servarr.com/sonarr/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/Sonarr/Sonarr){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/hotio/sonarr){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://sonarr.tv/){: .header-icons } | [:octicons-link-16: Docs](https://wiki.servarr.com/sonarr/){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/Sonarr/Sonarr){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/hotio/sonarr){: .header-icons }|
 
 ## URL
 
@@ -31,7 +31,7 @@ Make changes in the following sections:
             - Set your preferred naming format; here are some examples:
 
                 <details>
-                <summary>TRaSH' naming guide [Recommended[</summary> <br />
+                <summary>TRaSH' naming guide [Recommended]</summary> <br />
 
                 Go [here](https://trash-guides.info/Sonarr/Sonarr-recommended-naming-scheme/) for the latest updates.  These examples may be out of date.
 
@@ -238,6 +238,48 @@ Make changes in the following sections:
 
             5. Click "Save" to add NZBGet.
 
+        === "SABNzbd"
+
+            1. Click Add (`+`)
+
+            2. Add a new "SABNzbd" download client.
+
+            3. Add the following:
+
+                Name: SABNzbd
+
+                Enable: `Yes`
+
+                Host: `sabnzbd`
+
+                Port: `8080`
+
+                For authentication, you can use either an API key or a username/password.
+
+                === "API Key"
+
+                    API Key:  [Your SABNzbd API Key](../apps/sabnzbd.md)
+
+                === "Username/password"
+
+                    Username:  [Your SABNzbd Username](../apps/sabnzbd.md)
+
+                    Password:  [Your SABNzbd Password](../apps/sabnzbd.md)
+
+                Category: `sonarr`
+
+                Use SSL: `No`
+
+                Add Paused: `No`
+
+            4. Your settings will look like this:
+
+                Either API Key **OR** Username/Password should be filled in, **not both**
+
+                ![Sonarr Sabnzbd Downloader](../images/sonarr/sonarr-sabnzbd.png)
+
+            5. Click "Save" to add SABNzbd.
+
         === "ruTorrent"
 
             1. Click Add (`+`)
@@ -437,4 +479,4 @@ This is used during the setup of [Overseer](overseerr.md) and [Organizr](organiz
 
 ## Next
 
-Are you setting Saltbox up for the first time?  Continue to [Radarr](../radarr/).
+Are you setting Saltbox up for the first time?  Continue to [Radarr](radarr.md).

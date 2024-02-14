@@ -2,7 +2,7 @@
 
 ## What is it?
 
-[tqm](https://github.com/l3uddz/tqm){: target=_blank rel="noopener noreferrer" } is a CLI tool to manage your torrent client queues. Primary focus is on removing torrents that meet specific criteria.
+[tqm](https://github.com/l3uddz/tqm) is a CLI tool to manage your torrent client queues. Primary focus is on removing torrents that meet specific criteria.
 
 - The tqm binary is downloaded and a service and timer file created when the config is identified.
 
@@ -11,7 +11,7 @@
 
 | Details     |
 |-------------|
-| [:octicons-mark-github-16: Github](https://github.com/l3uddz/tqm){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:octicons-mark-github-16: Github](https://github.com/l3uddz/tqm){: .header-icons }|
 
 Recommended install types: Feederbox, Saltbox, Core
 
@@ -28,7 +28,7 @@ nano /opt/tqm/config.yaml
 ### Modify "Client" section
 
 !!! Note
-      📢 As setup for Saltbox, tqm uses this path to find your downloaded files:  `/mnt/unionfs/downloads/...` (see [Paths](/saltbox/basics/paths.md#media))
+      📢 As setup for Saltbox, tqm uses this path to find your downloaded files:  `/mnt/unionfs/downloads/...` (see [Paths](../../saltbox/basics/paths.md#media))
 
 Client Example:
 
@@ -103,7 +103,7 @@ filters:
 
 `remove:` Instructs **tqm** what files to delete based on what is defined in the **filter**.
 
-Note: There are many ways to do the same thing. Check the **language definitions** for an explanation [here](https://github.com/antonmedv/expr/blob/586b86b462d22497d442adbc924bfb701db3075d/docs/Language-Definition.md){: .header-icons target=_blank rel="noopener noreferrer" }
+Note: There are many ways to do the same thing. Check the **language definitions** for an explanation [here](https://github.com/antonmedv/expr/blob/586b86b462d22497d442adbc924bfb701db3075d/docs/Language-Definition.md){: .header-icons }
 
 ### Modify "Label" section
 
@@ -183,4 +183,4 @@ tail -f /opt/tqm/activity.log
 
 ```
 
-- [:octicons-link-16: Documentation](https://github.com/l3uddz/tqm#tqm){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation](https://github.com/l3uddz/tqm#tqm){: .header-icons }

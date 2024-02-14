@@ -2,11 +2,11 @@
 
 ## What is it?
 
-[HandBrake](https://handbrake.fr/){: target=_blank rel="noopener noreferrer" } is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.
+[HandBrake](https://handbrake.fr/) is a tool for converting video from nearly any format to a selection of modern, widely supported codecs.
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://handbrake.fr/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://handbrake.fr/docs){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/HandBrake/HandBrake){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/jlesage/handbrake){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://handbrake.fr/){: .header-icons } | [:octicons-link-16: Docs](https://handbrake.fr/docs){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/HandBrake/HandBrake){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/jlesage/handbrake){: .header-icons }|
 
 ### 1. Installation
 
@@ -22,7 +22,7 @@ sb install sandbox-handbrake
 
 ### 3. Setup
 
-1. Edit the HandBrake section in [saltbox `settings.yml`:](../settings.md) and enter your desired password. Please note that it MUST be less than eight characters.
+1. Edit the HandBrake section in [sandbox `settings.yml`:](../settings.md) and enter your desired password. Please note that it MUST be less than eight characters.
 
     ``` { .yaml }
     handbrake:
@@ -40,7 +40,7 @@ sb install sandbox-handbrake
 3. Access HandBrake `https://handbrake._yourdomain.com_`
 
 4. See the HandBrake documentation for usage:
-      - [:octicons-link-16: Documentation](https://handbrake.fr/docs){: .header-icons target=_blank rel="noopener noreferrer" }
+      - [:octicons-link-16: Documentation](https://handbrake.fr/docs){: .header-icons }
 
 !!! Tip
-      This container has an automatic video converter built in, see the [container documentation here](https://github.com/jlesage/docker-handbrake#automatic-video-conversion){: .header-icons target=_blank rel="noopener noreferrer" }.
+      This container has an automatic video converter built in, see the [container documentation here](https://github.com/jlesage/docker-handbrake#automatic-video-conversion){: .header-icons }.

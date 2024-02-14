@@ -12,7 +12,7 @@ It's assuming you're working through the steps from [here](rclone-manual.md) and
 
 NOTE: This guide is assuming a Google Gsuite Business/Workspace account.
 
-If you already have media on Google Drive [My Drive OR Shared Drives] from your time with Cloudbox or PlexGuide or the like, you most likely DO NOT WANT TO DO THIS.  This process is assuming you are starting from scratch without any of this already set up.  It may overwrite aspects of an existing rclone setup with no undo.
+If you already have media on Google Drive [My Drive OR Shared Drives] from your time with Cloudbox or the like, you most likely DO NOT WANT TO DO THIS.  This process is assuming you are starting from scratch without any of this already set up.  It may overwrite aspects of an existing rclone setup with no undo.
 
 1. Retrieve the `sb-gd` code
 
@@ -107,6 +107,8 @@ If you already have media on Google Drive [My Drive OR Shared Drives] from your 
         'TV-4K': '/Media/TV-4K'
     }
     ```
+
+    If you noticed and deleted some empty JSON files in the previous step, verify that `/opt/sa/all/150.json` exists; if it doesn't, change that line in `config.py` to any other JSON file that *does* exist.   There's nothing magic about `150.json`.
 
     If you don't want to create some of those shared drives, remove the line.  It's safe to go ahead and create them for simplicity later in the event you want to start using them.  The list should not have a comma at the end, as shown above.
 
@@ -240,7 +242,7 @@ BEFORE YOU DO ANYTHING ELSE:
 
 The automatic backup above would have done this for you.  If for some reason you want to wipe your machine and start again OUTSIDE THE USUAL BACKUP/RESTORE you will need those files. You can just restore them rather than going through this whole process again.
 
-If you are going through the manual rclone instructions, [continue with the next step](../rclone-manual#step-8-verify-that-the-union-remote-shows-you-the-expected-contents)
+If you are going through the manual rclone instructions, [continue with the next step](rclone-manual.md#step-8-verify-that-the-union-remote-shows-you-the-expected-contents)
 
 IF YOU WANT TO RUN THIS AGAIN TO ADD MORE SHARED DRIVES:
 
@@ -268,7 +270,9 @@ IF YOU WANT TO RUN THIS AGAIN TO ADD MORE SHARED DRIVES:
     deactivate
     ```
 
-5. Reboot your server
+5. Rerun the cloudplow setup script if desired. [notes](cloudplow-config.md#updating-cloudplow-config-for-additional-shared-drives)
+
+6. Reboot your server
 
     ```shell
     sudo reboot

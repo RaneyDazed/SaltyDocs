@@ -1,17 +1,23 @@
-# Creating an rclone remote
+# Creating an rclone remote for Google Drive
 
-This article describes how to create an rclone remote
+This article describes how to create an rclone remote for Google Drive
+
+This article walks through creating a Google Drive remote, but basically the same process is followed for any type of remote; dropbox, sftp, whatever.  Choose the desired type of remote in step 4 and follow the prompts.
 
 ## Prerequisites
 
-To go through this process, you will need either one of these for your Google account:
+To go through this process, you will need the following:
 
-   1. ClientID/Secret
-   2. Service Account JSON file(s)
+   1. either one of these for your Google account:
 
-The project associated with these needs to be set to "external".  See step 9 on [this page](../google-project-setup.md).
+      a. ClientID/Secret
 
-You will need rclone and a web browser installed on a machine local to you [this machine needs a GUI].
+      b. Service Account JSON file(s)
+
+   2. The project associated with these needs to be set to "external".  See step 9 on [this page](../google-project-setup.md).
+   3. rclone installed on your saltbox machine [which means the preinstall has been run]
+   4. rclone [same or higher version as on the saltbox machine] and a web browser installed on a machine local to you [this machine needs a GUI].  NOTE: this should be the same machine on which you are sshed to the saltbox server, as you will have to copy-paste a very long token a bit later.
+
 
 ## Walkthrough
 
@@ -49,24 +55,14 @@ You will need rclone and a web browser installed on a machine local to you [this
     Choose a number from below, or type in your own value.
     1 / 1Fichier
       \ "fichier"
-    2 / Alias for an existing remote
-      \ "alias"
      ...
-    14 / FTP Connection
-       \ "ftp"
     15 / Google Cloud Storage (this is not Google Drive)
        \ "google cloud storage"
     16 / Google Drive
        \ "drive"
     17 / Google Photos
        \ "google photos"
-    18 / Hadoop distributed file system
-       \ "hdfs"
     ...
-    43 / http Connection
-       \ "http"
-    44 / premiumize.me
-       \ "premiumizeme"
     45 / seafile
        \ "seafile"
     Storage> drive
@@ -220,13 +216,15 @@ You will need rclone and a web browser installed on a machine local to you [this
 
 12. If asked to login, use the Google Drive account you want to store your data in.
 
-    [](../../images/rclone-remote/google-login.png)
+    ![](../../images/rclone-remote/google-login.png)
 
 13. Give access by clicking "Allow".
 
-    [](../../images/rclone-remote/google-permission.png)
+    ![](../../images/rclone-remote/google-permission.png)
 
 14. The browser should report success.
+
+    ![](../../images/rclone-remote/dropbox-success.png)
 
 15. And a token should show up in the terminal on your local computer:
 
@@ -328,14 +326,6 @@ You will need rclone and a web browser installed on a machine local to you [this
     e/n/d/r/c/s/q> q
     ```
 
-## Existing Rclone Setup
+The name of this remote [`google` in this case] is what you should enter in the rclone settings as you proceed with the install.
 
-The default remote specified in [[settings.yml|Install: settings.yml]] is `google` for Google Drive. If the Rclone remote in your config has the same name, then you are OK to skip this page and go on to the next.
-
-If you are using Google Drive and the Rclone remote in your config has a different name, then you will need to either:
-
-- Rename your current Rclone remote to the default one (i.e. `google`). Instructions for this are below.
-
-OR
-
-- Edit the Rclone remote entry in [settings.yml](../accounts.md) with yours.
+If you wish to encrypt this remote, proceed with [creating a crypt remote](rclone-remote-encrypted.md)

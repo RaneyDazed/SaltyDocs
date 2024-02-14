@@ -4,7 +4,7 @@
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://radarr.video/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://wiki.servarr.com/radarr/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/Radarr/Radarr){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/hotio/radarr){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://radarr.video/){: .header-icons } | [:octicons-link-16: Docs](https://wiki.servarr.com/radarr/){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/Radarr/Radarr){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/hotio/radarr){: .header-icons }|
 
 ## URL
 
@@ -236,6 +236,48 @@ Make changes in the following sections:
 
             5. Click "Save" to add NZBGet.
 
+        === "SABNzbd"
+
+            1. Click Add (`+`)
+
+            2. Add a new "SABNzbd" download client.
+
+            3. Add the following:
+
+                Name: SABNzbd
+
+                Enable: `Yes`
+
+                Host: `sabnzbd`
+
+                Port: `8080`
+
+                For authentication, you can use either an API key or a username/password.
+
+                === "API Key"
+
+                    API Key:  [Your SABNzbd API Key](../apps/sabnzbd.md)
+
+                === "Username/password"
+
+                    Username:  [Your SABNzbd Username](../apps/sabnzbd.md)
+
+                    Password:  [Your SABNzbd Password](../apps/sabnzbd.md)
+
+                Category: `radarr`
+
+                Use SSL: `No`
+
+                Add Paused: `No`
+
+            4. Your settings will look like this:
+
+                Either API Key **OR** Username/Password should be filled in, **not both**
+
+                ![Radarr Sabnzbd Downloader](../images/radarr/radarr-sabnzbd.png)
+
+            5. Click "Save" to add SABNzbd.
+
         === "ruTorrent"
 
             1. Click Add (`+`)
@@ -349,11 +391,23 @@ Make changes in the following sections:
 
                 On Rename: `Yes`
 
+                On Movie Added: `No`
+
                 On Movie Delete: `Yes`
 
                 On Movie File Delete: `Yes`
 
                 On Movie File Delete For Upgrade: `Yes`
+
+                On Health Issue: `No`
+
+                On Health Restored: `No`
+
+                Include Health Warnings: `No`
+
+                On Application Update: `No`
+
+                On Manual Intervention Required: `No`
 
                 Tags: _Leave Blank_
 
@@ -364,6 +418,8 @@ Make changes in the following sections:
                 Username: AS SET IN AUTOSCAN CONFIG [defaults to Saltbox Username]
 
                 Password: AS SET IN AUTOSCAN CONFIG [defaults to Saltbox Password]
+
+                THERE MAY BE OTHER CHECKBOXES AVAILABLE: UNCHECK THEM ALL LEAVING ONLY THE ONES SPECIFICALLY LISTED ABOVE ENABLED.
 
             4. The settings will look like this:
 
@@ -434,4 +490,4 @@ This is used during the setup of [Overseerr](overseerr.md) and [Organizr](organi
 
 ## Next
 
-Are you setting Saltbox up for the first time?  Continue to [Lidarr](../lidarr/).
+Are you setting Saltbox up for the first time?  Continue to [Lidarr](lidarr.md).

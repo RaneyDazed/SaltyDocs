@@ -2,11 +2,11 @@
 
 ## What is it?
 
-[Sshwifty](https://github.com/nirui/sshwifty){: target=_blank rel="noopener noreferrer" } is an SSH and Telnet connector made for the Web. It can be deployed on your computer or server to provide SSH and Telnet access interface for any compatible (standard) web browser.
+[Sshwifty](https://github.com/nirui/sshwifty) is an SSH and Telnet connector made for the Web. It can be deployed on your computer or server to provide SSH and Telnet access interface for any compatible (standard) web browser.
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://github.com/nirui/sshwifty){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://github.com/nirui/sshwifty){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/nirui/sshwifty){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/niruix/sshwifty){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://github.com/nirui/sshwifty){: .header-icons } | [:octicons-link-16: Docs](https://github.com/nirui/sshwifty){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/nirui/sshwifty){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/niruix/sshwifty){: .header-icons }|
 
 ### 1. Installation
 
@@ -22,6 +22,6 @@ sb install sandbox-sshwifty
 
 ### 3. Setup
 
-- The pre-configured password is taken from your Saltbox [`accounts.yml`](../../../saltbox/install/install/#configuration) file located in `/srv/git/saltbox/accounts.yml`
+- The pre-configured password is taken from your Saltbox [`accounts.yml`](../../saltbox/install/install.md#configuration) file located in `/srv/git/saltbox/accounts.yml`
 
-- [:octicons-link-16: Documentation](https://github.com/nirui/sshwifty){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation](https://github.com/nirui/sshwifty){: .header-icons }

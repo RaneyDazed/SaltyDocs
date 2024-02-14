@@ -2,13 +2,13 @@
 
 ## What is it?
 
-[Ombi**X**](https://ombi.io){: target=_blank rel="noopener noreferrer" } is an [arr**X** role](arrx.md) for [Ombi](../../sandbox/apps/ombi.md).
+[Ombi**X**](https://ombi.io) is an [arr**X** role](arrx.md) for [Ombi](../../sandbox/apps/ombi.md).
 
-[Ombi](https://ombi.io/){: target=_blank rel="noopener noreferrer" } is a self-hosted web application that automatically gives your shared Plex or Emby users the ability to request content by themselves!
+[Ombi](https://ombi.io/) is a self-hosted web application that automatically gives your shared Plex or Emby users the ability to request content by themselves!
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://ombi.io/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://docs.ombi.app/guides/installation/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/Ombi-app/Ombi){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/hotio/ombi){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://ombi.io/){: .header-icons } | [:octicons-link-16: Docs](https://docs.ombi.app/guides/installation/){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/Ombi-app/Ombi){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/hotio/ombi){: .header-icons }|
 
 ### 1. Installation
 
@@ -38,4 +38,4 @@ sb install sandbox-ombix
 - For app specific instructions refer to the parent role,
   - [Ombi](../../sandbox/apps/ombi.md)<Br/>
   - and the upstream documentation <BR/>
-       [:octicons-link-16: Documentation](https://docs.ombi.app/guides/installation/){: .header-icons target=_blank rel="noopener noreferrer" }
+       [:octicons-link-16: Documentation](https://docs.ombi.app/guides/installation/){: .header-icons }

@@ -1,8 +1,8 @@
 # Installation
 
 !!! warning
-    This is a reference discussing an aspect of the [install process](../../saltbox/install/install/#install).
-    If you are looking for the steps to follow to install, they are [here](../../saltbox/install/install).
+    This is a reference discussing an aspect of the [install process](../saltbox/install/install.md#install).
+    If you are looking for the steps to follow to install, they are [here](../saltbox/install/install.md).
 
 ## Install Saltbox
 
@@ -42,3 +42,5 @@ Eventually, it will stop, and if successful, will display something like this:
 Note the `failed=0`.
 
 If you don't see that, scroll up and the actual error should not be far away.
+
+As with any tag, it is safe to run the install tag[s] at will.

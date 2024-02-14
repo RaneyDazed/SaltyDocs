@@ -4,7 +4,7 @@
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://lidarr.audio){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://wiki.servarr.com/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/Lidarr/Lidarr){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/hotio/lidarr){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://lidarr.audio){: .header-icons } | [:octicons-link-16: Docs](https://wiki.servarr.com/){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/Lidarr/Lidarr){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/hotio/lidarr){: .header-icons }|
 
 ## URL
 
@@ -405,4 +405,4 @@ This is used during the setup of [Organizr](organizr.md).
 
 ## Next
 
-Are you setting Saltbox up for the first time?  Continue to [Tautulli](../tautulli/).
+Are you setting Saltbox up for the first time?  Continue to [Tautulli](tautulli.md).

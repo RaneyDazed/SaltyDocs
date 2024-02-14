@@ -2,11 +2,11 @@
 
 ## What is it?
 
-[Recyclarr](https://github.com/recyclarr/recyclarr){: target=_blank rel="noopener noreferrer" } automatically synchronizes recommended settings from TRaSH guides to your Sonarr/Radarr instances.
+[Recyclarr](https://github.com/recyclarr/recyclarr) automatically synchronizes recommended settings from TRaSH guides to your Sonarr/Radarr instances.
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://github.com/recyclarr/recyclarr){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://recyclarr.dev/wiki){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/recyclarr/recyclarr){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://ghcr.io/recyclarr/recyclarr){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://github.com/recyclarr/recyclarr){: .header-icons } | [:octicons-link-16: Docs](https://recyclarr.dev/wiki){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/recyclarr/recyclarr){: .header-icons } | [:material-docker: Docker](https://ghcr.io/recyclarr/recyclarr){: .header-icons }|
 
 ### 1. Installation
 
@@ -50,4 +50,4 @@ If a config file does not exist, a default config is generated but it is not fun
 
 Follow documentation to complete configuration
 
-- [:octicons-link-16: Documentation](https://recyclarr.dev/wiki){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation](https://recyclarr.dev/wiki){: .header-icons }

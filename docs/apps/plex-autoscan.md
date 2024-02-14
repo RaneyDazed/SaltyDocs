@@ -2,19 +2,19 @@
 
 ## What is it?
 
-[Plex Autoscan](https://github.com/l3uddz/plex_autoscan/) (by [l3uddz](https://github.com/l3uddz/)) is a script that assists Plex with the adding media files, that were imported by Sonarr / Radarr, by only scanning the folder that has been imported (vs the entire section library folder), thereby preventing Google API bans.
+[Plex Autoscan](https://github.com/l3uddz/plex_autoscan/) (by [l3uddz](https://github.com/l3uddz/)) is a script that assists Plex with the adding media files, that were imported by Sonarr / Radarr, by only scanning the folder that has been imported (vs the entire section library folder), thereby preventing excessive cloud storage activity.
 
 Plex Autoscan comes configured out of the box (as related to Saltbox). However, there a few things that need to be set by you.
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| :material-home: Project home | :octicons-link-16: Docs | [:octicons-mark-github-16: Github](https://github.com/l3uddz/plex_autoscan){: .header-icons target=_blank rel="noopener noreferrer" } | :material-docker: Docker |
+| :material-home: Project home | :octicons-link-16: Docs | [:octicons-mark-github-16: Github](https://github.com/l3uddz/plex_autoscan){: .header-icons } | :material-docker: Docker |
 
 ### 1. Installation
 
 ``` shell
 
-sb install plex_autoscan
+sb install plex-autoscan
 
 ```
 
@@ -60,7 +60,7 @@ _Note: For Mediabox / Feederbox setups, the following will be done on the Mediab
 
 _Note: For Mediabox / Feederbox setup, the following will be done on the Mediabox._
 
-The Plex Autoscan URL is needed during the setup of [Sonarr](sonarr#plex-autoscan), [Radarr](radarr#plex-autoscan), and [Lidarr](lidarr#plex-autoscan).
+The Plex Autoscan URL is needed during the setup of [Sonarr](sonarr.md#plex-autoscan), [Radarr](radarr.md#plex-autoscan), and [Lidarr](lidarr.md#plex-autoscan).
 
 To get your Plex Autoscan URL, run the following command:
 
@@ -87,7 +87,7 @@ _Note 3: For Mediabox setups, make sure that the port is open in the firewall an
 
 _Note 4: The PAS URL is not meant to be accessed via a browser by default (i.e. going there will give you a `401 Unauthorized` error). However, you can enable a web UI for manual scan requests, see [here](../reference/plex-autoscan-extras.md#web-app)._
 
-#### Upload Control File to Google Drive
+#### Upload Control File to Cloud Storage
 
 The following step is important so that Plex Autoscan can remove missing/replaced media files out of Plex (i.e. empty trash). Without it, Plex will be left with "unavailable" media that can't play (i.e. media posters with trash icons on them).
 
@@ -101,7 +101,7 @@ To upload the mounted.bin control file, run the following command:
 rclone touch google:/mounted.bin
 ```
 
-_Note 1: If your Rclone remote config has a different name for Google Drive, replace `google:` with yours._
+_Note 1: If your Rclone remote config has a different name for your cloud storage remote, replace `google:` with yours._
 
 _Note 2: Above command requires Rclone version 1.39+._
 

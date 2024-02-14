@@ -2,11 +2,11 @@
 
 ## What is it?
 
-[InvoiceNinja](https://www.invoiceninja.com/){: target=_blank rel="noopener noreferrer" } is a self-hosted accounting system with ability to Quote & Invoice Clients, Time Billable-Tasks, Track Expenses, Get Paid.
+[InvoiceNinja](https://www.invoiceninja.com/) is a self-hosted accounting system with ability to Quote & Invoice Clients, Time Billable-Tasks, Track Expenses, Get Paid.
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://www.invoiceninja.com/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://invoiceninja.github.io/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/invoiceninja/invoiceninja/tree/v5-stable){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/invoiceninja/invoiceninja/){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://www.invoiceninja.com/){: .header-icons } | [:octicons-link-16: Docs](https://invoiceninja.github.io/){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/invoiceninja/invoiceninja/tree/v5-stable){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/invoiceninja/invoiceninja/){: .header-icons }|
 
 ### 1. Installation
 
@@ -33,4 +33,4 @@ sb install sandbox-invoiceninja
 
 Enter email, and password from accounts.yml setting.
 
-- [:octicons-link-16: Documentation](https://invoiceninja.github.io/){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation](https://invoiceninja.github.io/){: .header-icons }

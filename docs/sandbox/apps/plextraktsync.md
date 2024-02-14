@@ -1,45 +1,51 @@
 # PlexTraktSync
 
-## What is it?
+[PlexTraktSync](https://github.com/Taxel/PlexTraktSync) adds a two-way-sync between Trakt and Plex Media Server. It requires a Trakt account but no Plex Pass and no Trakt VIP membership, contrary to the Plex app provided by Trakt.
 
-[PlexTraktSync](https://github.com/Taxel/PlexTraktSync){: target=_blank rel="noopener noreferrer" } adds a two-way-sync between trakt.tv and Plex Media Server. It requires a trakt.tv account but no Plex premium and no Trakt VIP subscriptions, unlike the Plex app provided by Trakt.
+<div class="grid" style="grid-template-columns: repeat(auto-fit,minmax(10.5rem,1fr));" markdown>
 
-| Details     |
-|-------------|
-| [:octicons-mark-github-16: Github](https://github.com/Taxel/PlexTraktSync){: .header-icons target=_blank rel="noopener noreferrer" } |
+[:material-bookshelf: Project Docs](https://github.com/Taxel/PlexTraktSync#setup){ .md-button .md-button--stretch }
 
-Recommended install types: Mediabox, Saltbox
+[:material-github: GitHub Repo](https://github.com/Taxel/PlexTraktSync){ .md-button .md-button--stretch }
 
-### 1. Installation
+[:material-cube: GitHub Packages](https://github.com/taxel/PlexTraktSync/pkgs/container/plextraktsync){ .md-button .md-button--stretch }
+
+</div>
+
+## Deployment
 
 ``` shell
 sb install sandbox-plextraktsync
 ```
 
-### 2. Setup
+## Configuration
 
 Set your general preferences in `/opt/plextraktsync/config.yml`.
 
 The following command will launch an interactive script prompting you for missing credentials (use this to set up Trakt.tv):
 
 ```shell
-docker exec -it plextraktsync python3 -m plextraktsync login
+docker exec -it plextraktsync plextraktsync login
 ```
 
 By default, the target Plex server is set to your main Plex Saltbox instance, and the sync user is set to that server's owner account. If you wish to reset this, run:
 
 ```shell
-docker exec -it plextraktsync python3 -m plextraktsync plex-login
+docker exec -it plextraktsync plextraktsync plex-login
 ```
 
-Most of these fields can be manually edited in `/opt/plextraktsync/.env`.
+## Usage
 
-### 3. Usage
+Once configured, the daemon simply scrobbles the selected Plex user's streaming activity.
 
-By default, the PlexTraktSync instance's only assignment is to listen to your configured user's Plex activity and scrobble it. You may also wish to sync your backlog on a schedule, for example, by adding a crontab line containing `docker exec plextraktsync python3 -m plextraktsync`.
+The following will perform a one-time sync of the data you have specified in the configuration file.
+
+```shell
+docker exec -it plextraktsync plextraktsync sync
+```
 
 To get a list of commands, run:
 
 ```shell
-docker exec -it plextraktsync python3 -m plextraktsync --help
+docker exec -it plextraktsync plextraktsync --help
 ```

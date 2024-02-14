@@ -2,11 +2,11 @@
 
 ## What is it?
 
-[Doplarr](https://github.com/kiranshila/doplarr){: target=_blank rel="noopener noreferrer" } is a chatbot used to simplify using services like Sonarr/Radarr/Overseer via the use of chat. Current platform is Discord only.
+[Doplarr](https://github.com/kiranshila/doplarr) is a chatbot used to simplify using services like Sonarr/Radarr/Overseer via the use of chat. Current platform is Discord only.
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://github.com/kiranshila/doplarr){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://github.com/kiranshila/doplarr){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/kiranshila/doplarr){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://ghcr.io/kiranshila/doplarr){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://github.com/kiranshila/doplarr){: .header-icons } | [:octicons-link-16: Docs](https://github.com/kiranshila/doplarr){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/kiranshila/doplarr){: .header-icons } | [:material-docker: Docker](https://ghcr.io/kiranshila/doplarr){: .header-icons }|
 
 ## Setup Doplarr
 
@@ -34,7 +34,7 @@ sb install sandbox-doplarr
 
 !!! Note
       📢 You may also override the default setting of Doplarr working with overseer, to work with Sonarr and Radarr. Additional informations here [:octicons-link-16: Documentation](https://github.com/kiranshila/Doplarr/blob/main/README.md#sonarrradarr) .
-      The recommended way to customize these parameters is to use the [inventory](https://docs.saltbox.dev/saltbox/inventory/) :
+      The recommended way to customize these parameters is to use the [inventory](../../saltbox/inventory/index.md :
       You should edit `/srv/git/saltbox/inventories/host_vars/localhost.yml` and add the following section:
 
   ```yaml

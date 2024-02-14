@@ -4,11 +4,11 @@ THIS PAGE HAS NOT BEEN FULLY UPDATED FOR SALTBOX
 
 [ruTorrent](https://github.com/Novik/ruTorrent) (by Novik) is a front-end for the popular, lightweight, and extensible BitTorrent client [rtorrent](https://github.com/rakshasa/rtorrent) (by Jari Sundell aka rakshasa).
 
-_Note: public trackers are disabled by default in the standard install.  Refer to the FAQ for [instructions on re-enabling them](https://docs.saltbox.dev/faq/ruTorrent/?h=public#enable-access-to-public-torrent-trackers)._
+_Note: public trackers are disabled by default in the standard install.  Refer to the FAQ for [instructions on re-enabling them](../faq/ruTorrent.md?h=public#enable-access-to-public-torrent-trackers)._
 
 | Details     |             |             |             |             |
 |-------------|-------------|-------------|-------------|-------------|
-| :material-home: Project home | [:octicons-link-16: Docs](https://github.com/Novik/ruTorrent/wiki){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github ruTorrent](https://github.com/Novik/ruTorrent){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github rTorrent](https://github.com/rakshasa/rtorrent){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/horjulf/rutorrent-autodl){: .header-icons target=_blank rel="noopener noreferrer" }|
+| :material-home: Project home | [:octicons-link-16: Docs](https://github.com/Novik/ruTorrent/wiki){: .header-icons } | [:octicons-mark-github-16: Github ruTorrent](https://github.com/Novik/ruTorrent){: .header-icons } | [:octicons-mark-github-16: Github rTorrent](https://github.com/rakshasa/rtorrent){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/horjulf/rutorrent-autodl){: .header-icons }|
 
 ## 1. URL
 
@@ -63,7 +63,3 @@ And then restart the Docker container:
 ```bash
 docker restart rutorrent
 ```
-
-## 4. Next
-
-Are you setting Saltbox up for the first time?  Continue to [NZBHydra2](../nzbhydra2/).

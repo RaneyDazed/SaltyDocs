@@ -4,7 +4,7 @@
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://organizr.app){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://organizr.app/howtos/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/causefx/Organizr){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/organizr/organizr){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://organizr.app){: .header-icons } | [:octicons-link-16: Docs](https://organizr.app/howtos/){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/causefx/Organizr){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/organizr/organizr){: .header-icons }|
 
 ## 2. URL
 
@@ -71,7 +71,7 @@ Note: it is suggested to enter your `plex username and password`
     | Sonarr        | `https://sonarr.yourdomain.tld`       | images/sonarr.png             |   Unsorted   |  Admin   |   iFrame   |     Y     |
     | Radarr        | `https://radarr.yourdomain.tld`       | images/radarr.png             |   Unsorted   |  Admin   |   iFrame   |     Y     |
     | NZBGet        | `https://nzbget.yourdomain.tld`       | images/nzbget.png             |   Unsorted   |  Admin   |   iFrame   |     Y     |
-    | Rutorrent     | `https://rutorrent.yourdomain.tld`    | images/rutorrent.png          |   Unsorted   |  Admin   |   iFrame   |     Y     |
+    | qbittorrent     | `https://qbittorrent.yourdomain.tld`    | images/qbittorrent.png          |   Unsorted   |  Admin   |   iFrame   |     Y     |
     | NZBHydra2     | `https://nzbhydra2.yourdomain.tld`    | images/hydra.png              |   Unsorted   |  Admin   |   iFrame   |     Y     |
     | Jackett       | `https://jackett.yourdomain.tld`      | images/jackett.png            |   Unsorted   |  Admin   |   iFrame   |     Y     |
     | Plex          | `https://plex.yourdomain.tld`         | images/plex.png               |   Unsorted   |  User    |   iFrame   |     Y     |
@@ -153,4 +153,4 @@ Any additional question please reach out to the [Organizr](https://organizr.app/
 
 ## Next
 
-Are you setting Saltbox up for the first time?  You're ready to explore Saltbox! You can start checking out community apps in [Sandbox](https://docs.saltbox.dev/sandbox/basics/) if you wish.
+Are you setting Saltbox up for the first time?  You're ready to explore Saltbox! You can start checking out community apps in [Sandbox](../sandbox/basics.md) if you wish.

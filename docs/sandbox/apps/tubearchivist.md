@@ -2,7 +2,7 @@
 
 ## What is it?
 
-[Tubearchivist](https://www.tubearchivist.com/){: target=_blank rel="noopener noreferrer" } is a self hosted Youtube media server.
+[Tubearchivist](https://www.tubearchivist.com/) is a self hosted Youtube media server.
 
 - Subscribe to your favorite YouTube channels
 - Download Videos using yt-dlp
@@ -15,7 +15,7 @@
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://www.tubearchivist.com/){: .Teader-icons target=_blTnk rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://github.com/tubearchivist/tubearchivist/wiki){: .header-icons taTget=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/tubearchivist/tubearchivist){: .header-icoTs target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/bbilly1/tubearchivist){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://www.tubearchivist.com/){: .Teader-icons target=_blTnk rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://github.com/tubearchivist/tubearchivist/wiki){: .header-icons taTget=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/tubearchivist/tubearchivist){: .header-icoTs target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/bbilly1/tubearchivist){: .header-icons }|
 
 Recommended install types: Feederbox, Saltbox, Core
 
@@ -45,4 +45,4 @@ sb install sandbox-tubearchivist
 !!!note
    Tubearchivist adds the downloaded media to `/mnt/unionfs/downloads/tubearchivist/YT_CHANNEL_NAME`
 
-- [:octicons-link-16: Documentation: tubearchivist Docs](https://github.com/tubearchivist/tubearchivist/wiki){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation: tubearchivist Docs](https://github.com/tubearchivist/tubearchivist/wiki){: .header-icons }

@@ -8,19 +8,11 @@
 
 ## Previewing docs locally
 
-Basic previewing [some things may not preview accurately]:
+Local previewing is currently not available, as the docs use plugins that are only included in the Insiders' edition of `squidfunk/mkdocs-material`.
 
-```bash
-git clone https://github.com/saltyorg/docs
-cd docs
-docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
-```
+## Full previewing:
 
-Docs will be accessible at <http://localhost:8000>
-
-Full previewing:
-
-The docs are actually built with a different release of mkdocs-material, so to preview them as they will appear when deployed you will need to be added to a private repo and do some local setup to enable the previewing. Contact chazlarson through the Saltbox discord if you're interested in that.
+The docs are built with the Insiders' edition of `squidfunk/mkdocs-material`, so to preview them you will need to be added to a private repo and do some local setup to enable the previewing. Contact the devs through the Saltbox discord if you're interested in that.
 
 ### Contributors
 
@@ -71,10 +63,17 @@ The docs are actually built with a different release of mkdocs-material, so to p
 </tr>
 <tr>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
-        <a href=https://github.com/BeansIsFat>
-            <img src=https://avatars.githubusercontent.com/u/24848012?v=4 width="100;"  alt=BeansIsFat/>
+        <a href=https://github.com/thatsnasty>
+            <img src=https://avatars.githubusercontent.com/u/17760366?v=4 width="100;"  alt=thatsnasty/>
             <br />
-            <sub style="font-size:14px"><b>BeansIsFat</b></sub>
+            <sub style="font-size:14px"><b>thatsnasty</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/BeansIsFat>
+            <img src=https://avatars.githubusercontent.com/u/24848012?v=4 width="100;"  alt=Beans Baxter/>
+            <br />
+            <sub style="font-size:14px"><b>Beans Baxter</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
@@ -82,13 +81,6 @@ The docs are actually built with a different release of mkdocs-material, so to p
             <img src=https://avatars.githubusercontent.com/u/8098897?v=4 width="100;"  alt=skeeve42/>
             <br />
             <sub style="font-size:14px"><b>skeeve42</b></sub>
-        </a>
-    </td>
-    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
-        <a href=https://github.com/thatsnasty>
-            <img src=https://avatars.githubusercontent.com/u/17760366?v=4 width="100;"  alt=thatsnasty/>
-            <br />
-            <sub style="font-size:14px"><b>thatsnasty</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
@@ -107,13 +99,20 @@ The docs are actually built with a different release of mkdocs-material, so to p
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/rbax82>
-            <img src=https://avatars.githubusercontent.com/u/4734630?v=4 width="100;"  alt=Robert Baxter/>
+            <img src=https://avatars.githubusercontent.com/u/4734630?v=4 width="100;"  alt=Rob Baxter/>
             <br />
-            <sub style="font-size:14px"><b>Robert Baxter</b></sub>
+            <sub style="font-size:14px"><b>Rob Baxter</b></sub>
         </a>
     </td>
 </tr>
 <tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/Nypheena>
+            <img src=https://avatars.githubusercontent.com/u/16083155?v=4 width="100;"  alt=Sapphire/>
+            <br />
+            <sub style="font-size:14px"><b>Sapphire</b></sub>
+        </a>
+    </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/TurboCheetah>
             <img src=https://avatars.githubusercontent.com/u/19479111?v=4 width="100;"  alt=Turbo/>
@@ -143,6 +142,15 @@ The docs are actually built with a different release of mkdocs-material, so to p
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/Elbulus>
+            <img src=https://avatars.githubusercontent.com/u/125992280?v=4 width="100;"  alt=Elbulus/>
+            <br />
+            <sub style="font-size:14px"><b>Elbulus</b></sub>
+        </a>
+    </td>
+</tr>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/jolbol1>
             <img src=https://avatars.githubusercontent.com/u/5064896?v=4 width="100;"  alt=James Shopland/>
             <br />
@@ -156,13 +164,11 @@ The docs are actually built with a different release of mkdocs-material, so to p
             <sub style="font-size:14px"><b>JohnClementine</b></sub>
         </a>
     </td>
-</tr>
-<tr>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
-        <a href=https://github.com/PolarBlunk>
-            <img src=https://avatars.githubusercontent.com/u/16555169?v=4 width="100;"  alt=Kris/>
+        <a href=https://github.com/kwissss>
+            <img src=https://avatars.githubusercontent.com/u/16555169?v=4 width="100;"  alt=kris/>
             <br />
-            <sub style="font-size:14px"><b>Kris</b></sub>
+            <sub style="font-size:14px"><b>kris</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
@@ -173,10 +179,10 @@ The docs are actually built with a different release of mkdocs-material, so to p
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
-        <a href=https://github.com/kaizensh>
-            <img src=https://avatars.githubusercontent.com/u/94737187?v=4 width="100;"  alt=kaizen/>
+        <a href=https://github.com/kzndotsh>
+            <img src=https://avatars.githubusercontent.com/u/94737187?v=4 width="100;"  alt=kzndotsh/>
             <br />
-            <sub style="font-size:14px"><b>kaizen</b></sub>
+            <sub style="font-size:14px"><b>kzndotsh</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
@@ -186,6 +192,8 @@ The docs are actually built with a different release of mkdocs-material, so to p
             <sub style="font-size:14px"><b>markschrik</b></sub>
         </a>
     </td>
+</tr>
+<tr>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/stayupthetree>
             <img src=https://avatars.githubusercontent.com/u/239234?v=4 width="100;"  alt=stayupthetree/>
@@ -200,8 +208,6 @@ The docs are actually built with a different release of mkdocs-material, so to p
             <sub style="font-size:14px"><b>8a8al00ey</b></sub>
         </a>
     </td>
-</tr>
-<tr>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/ben-burns>
             <img src=https://avatars.githubusercontent.com/u/3254870?v=4 width="100;"  alt=Ben Burns/>
@@ -217,10 +223,26 @@ The docs are actually built with a different release of mkdocs-material, so to p
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/ChuckNorris9939>
+            <img src=https://avatars.githubusercontent.com/u/8191872?v=4 width="100;"  alt=ChuckNorris9939/>
+            <br />
+            <sub style="font-size:14px"><b>ChuckNorris9939</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/EvilHidden>
             <img src=https://avatars.githubusercontent.com/u/14209422?v=4 width="100;"  alt=EvilHidden/>
             <br />
             <sub style="font-size:14px"><b>EvilHidden</b></sub>
+        </a>
+    </td>
+</tr>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/hosquiat>
+            <img src=https://avatars.githubusercontent.com/u/13425905?v=4 width="100;"  alt=Hos Gee/>
+            <br />
+            <sub style="font-size:14px"><b>Hos Gee</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
@@ -244,8 +266,6 @@ The docs are actually built with a different release of mkdocs-material, so to p
             <sub style="font-size:14px"><b>Jordan</b></sub>
         </a>
     </td>
-</tr>
-<tr>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/kieron>
             <img src=https://avatars.githubusercontent.com/u/8655212?v=4 width="100;"  alt=Kieron/>
@@ -260,6 +280,8 @@ The docs are actually built with a different release of mkdocs-material, so to p
             <sub style="font-size:14px"><b>Kyle Mohr</b></sub>
         </a>
     </td>
+</tr>
+<tr>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/PawlakMarek>
             <img src=https://avatars.githubusercontent.com/u/26022173?v=4 width="100;"  alt=Marek Pawlak/>
@@ -268,10 +290,24 @@ The docs are actually built with a different release of mkdocs-material, so to p
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
-        <a href=https://github.com/nickstarkloff>
-            <img src=https://avatars.githubusercontent.com/u/51816213?v=4 width="100;"  alt=Nick Starkloff/>
+        <a href=https://github.com/nwithan8>
+            <img src=https://avatars.githubusercontent.com/u/17054780?v=4 width="100;"  alt=Nate Harris/>
             <br />
-            <sub style="font-size:14px"><b>Nick Starkloff</b></sub>
+            <sub style="font-size:14px"><b>Nate Harris</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/nickheyer>
+            <img src=https://avatars.githubusercontent.com/u/60236014?v=4 width="100;"  alt=Nicholas W. Heyer/>
+            <br />
+            <sub style="font-size:14px"><b>Nicholas W. Heyer</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/nickstarkloff>
+            <img src=https://avatars.githubusercontent.com/u/51816213?v=4 width="100;"  alt=Nick/>
+            <br />
+            <sub style="font-size:14px"><b>Nick</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
@@ -282,14 +318,35 @@ The docs are actually built with a different release of mkdocs-material, so to p
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/RelevantWorm>
+            <img src=https://avatars.githubusercontent.com/u/32888380?v=4 width="100;"  alt=RelevantWorm/>
+            <br />
+            <sub style="font-size:14px"><b>RelevantWorm</b></sub>
+        </a>
+    </td>
+</tr>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/spider1163>
+            <img src=https://avatars.githubusercontent.com/u/5990270?v=4 width="100;"  alt=Remy/>
+            <br />
+            <sub style="font-size:14px"><b>Remy</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/RichardMawdsley>
             <img src=https://avatars.githubusercontent.com/u/26411043?v=4 width="100;"  alt=Richard Mawdsley/>
             <br />
             <sub style="font-size:14px"><b>Richard Mawdsley</b></sub>
         </a>
     </td>
-</tr>
-<tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/heihachi>
+            <img src=https://avatars.githubusercontent.com/u/1756242?v=4 width="100;"  alt=Scarabyte/>
+            <br />
+            <sub style="font-size:14px"><b>Scarabyte</b></sub>
+        </a>
+    </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/tzockt>
             <img src=https://avatars.githubusercontent.com/u/67980380?v=4 width="100;"  alt=Tim/>
@@ -311,6 +368,8 @@ The docs are actually built with a different release of mkdocs-material, so to p
             <sub style="font-size:14px"><b>iDoMnCi</b></sub>
         </a>
     </td>
+</tr>
+<tr>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/mrfret>
             <img src=https://avatars.githubusercontent.com/u/72273384?v=4 width="100;"  alt=mrfret/>
@@ -332,8 +391,6 @@ The docs are actually built with a different release of mkdocs-material, so to p
             <sub style="font-size:14px"><b>powerdude</b></sub>
         </a>
     </td>
-</tr>
-<tr>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/xplorer990>
             <img src=https://avatars.githubusercontent.com/u/76548373?v=4 width="100;"  alt=xplorer990/>

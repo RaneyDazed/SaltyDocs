@@ -1,4 +1,4 @@
-This guide will show you how to set up a Google Project and create credentials that will work for safire or sa-gen or similar tools.
+This guide will show you how to set up a Google Project and create credentials that will work for sa-gen or similar tools.
 
 It's assuming you're working through the steps from [here](rclone-manual.md) and have completed the following steps:
 
@@ -142,4 +142,4 @@ Where the two placeholders are the Saltbox user and group [by default `seed:seed
 <br />
 </details>
 
-If you are going through the manual rclone instructions, [continue with the next step](../rclone-manual#step-3-create-a-google-group-to-hold-service-accounts)
+If you are going through the manual rclone instructions, [continue with the next step](rclone-manual.md#step-3-create-a-google-group-to-hold-service-accounts)

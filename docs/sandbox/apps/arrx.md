@@ -21,7 +21,7 @@ They're all named something*X* because they allow creation of *X* number of *som
 
 They are all configured in the same way.
 
-In general terms, you'll enter the instances you want into the [sandbox `settings.yml`:](../../sandbox/settings)
+In general terms, you'll enter the instances you want into the [sandbox `settings.yml`:](../settings.md)
 
 ```yaml
 appnamex:
@@ -67,7 +67,7 @@ The names, within the constraints above, are completely arbitrary.  There is not
 
 You will need to configure these new containers just as you did the stock containers.  One change; if applicable, **be sure each one gets a unique download category**, so that each instance imports only those downloads meant for it.
 
-Also, you probably want to put some thought into the directory and library structure you want to use.  See ["Customizing Plex Libraries"](https://github.com/Cloudbox/Cloudbox/wiki/Customizing-Plex-Libraries){: target=_blank rel="noopener noreferrer" }.
+Also, you probably want to put some thought into the directory and library structure you want to use.  See ["Customizing Plex Libraries"](https://github.com/Cloudbox/Cloudbox/wiki/Customizing-Plex-Libraries).
 
 ## Overwriting the stock container
 
@@ -130,7 +130,7 @@ Again, the same thing holds for every `arrX` variant discussed here.
 
 ## Examples: multiple Bazarr containers
 
-1. Edit [`settings.yml`](../../sandbox/settings.md) and change the bazarrx roles to what you want:
+1. Edit [`settings.yml`](../settings.md) and change the bazarrx roles to what you want:
 
    <details>
      <summary>I want to add a BING [4K, kids, German, whatever] version and leave my existing container untouched.</summary>

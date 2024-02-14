@@ -1,6 +1,6 @@
 # Presumptions
 
-Saltbox presumes you have a basic understanding of Linux, Docker containers, BitTorrent, and Usenet, and are also familiar with Sonarr, Radarr, NZBGet, rTorrent/ruTorrent, and Plex/Emby.
+Saltbox presumes you have a basic understanding of Linux, Docker containers, BitTorrent, and Usenet, and are also familiar with Sonarr, Radarr, NZBGet, qBittorrent, and Plex/Emby.
 
 The Saltbox setup is all done on the command line in the linux shell.  There is no GUI and there are no plans to add one.  If you want to run Saltbox, you *will need* to be familiar with Linux.
 
@@ -14,8 +14,8 @@ There are, broadly, 4 prerequisites to installing Saltbox:
 
 - [A Server](#server)
 - [A Domain Name](#domain)
-- [Cloud Storage](#cloud-storage)
-- [A Plex Account](#plex-account)
+- [Cloud Storage (optional)](#cloud-storage)
+- [A Plex Account (optional)](#plex-account)
 - [Usenet or Bittorrent sources](#usenet-or-bittorrent-sources)
 
 <!-- /TOC -->
@@ -33,14 +33,15 @@ At this time, we only support LTS releases of Ubuntu Server [20.04](https://rele
 
 For best results, the assumed server environment for Saltbox is:
 
-- a dedicated remote server [not a VPS],
-- a processor compliant with the `x86_64`/`amd64` [`arm` NOT SUPPORTED] architecture,
+- a dedicated remote server [not a VPS or a virtualized setup like proxmox],
+- with a processor compliant with the `x86_64`/`amd64` [`arm` NOT SUPPORTED] architecture,
+- running a brand new fresh install of the server version of Ubuntu 20.04 or 22.04,
 - from a server provider like Hetzner, OVH, kimsufi, etc.,
 - nothing else [docker, for example] preinstalled,
 - with at least 500GB of disk space, and
 - allowing root access.
 
-See [here](../../reference/server.md) for more information about server requirements.
+See [here](../../reference/server.md) for more details about server requirements.
 
 ## Domain
 
@@ -48,21 +49,25 @@ See [here](../../reference/server.md) for more information about server requirem
 
 Ports are [for the most part] bound only to the internal `saltbox` docker network, which means they are not visible on the host; you **won't be able to connect** to the apps using `IP:PORT`.
 
-See [here](../../reference/domain.md) for more information about setting up a domain and DNS settings for use with Saltbox.
+If you use Cloudflare for DNS [which is free and doesn't require that you register your domain through Cloudflare], the Saltbox setup can make the required DNS settings for you.  If you aren't using Cloudflare, you will have to set this up at your DNS provider yourself.  See [here](../../reference/domain.md) for more information about setting up a domain and DNS settings for use with Saltbox.
 
 ## Cloud Storage
 
-A base assumption in Saltbox is that you are storing your media on cloud storage.  Saltbox can be set up to use any cloud storage provider that [Rclone](https://rclone.org/) supports. However, Google Drive via [G-Suite Business](https://gsuite.google.com/pricing.html) is the preferred choice among users.  Some of the components are designed expressly for Google Drive, like the Google Drive monitoring in plex-autoscan and the service-account rotation in cloudplow.
+The default assumption in Saltbox is that you are storing your media on cloud storage.  Saltbox can be set up to use any cloud storage provider that [Rclone](https://rclone.org/) supports. Google Drive via [G-Suite Business](https://gsuite.google.com/pricing.html) has historically been the preferred choice among users, but with recent changes to the Google offering [Dropbox](https://www.dropbox.com/) was a primary choice for a while, but they have followed Google's lead in tightening restrictions.  Both work well as long as you stay within their restrictions, but the days of storing thousands of media files on cloud storage for pennies are past.
 
-See [here](../../reference/cloud.md) for more information about Cloud Storage requirements and running Saltbox without it.
+Some of the components are designed expressly for Google Drive, like the A-Train Google Drive monitoring in autoscan and the service-account rotation in cloudplow.  Recent Google changes have also rendered service accounts of little value with regard to increasing data transfer volume.
+
+THAT SAID, cloud storage is not a requirement; you can run saltbox without it, storing your media locally in a variety of ways.
+
+See [here](../../reference/cloud.md) for more details about Cloud Storage requirements and running Saltbox without it.
 
 ## Plex Account
 
-You'll need a [Plex account](https://www.plex.tv/sign-up/), if you don't already have one, for purposes of the install, *even if you're not planning to use Plex*.
+If you want to use Plex you'll need a [Plex account](https://www.plex.tv/sign-up/), if you don't already have one.
 
-This may change in the future, but for now it's a requirement for the simplest Happy Path install described here.
+Should you not wish to use Plex on a Mediabox install you should look into overriding the `media_servers_enabled` variable using the [inventory](../inventory/index.md).
 
-See [here](../../reference/plex.md) for more information about Plex account requirements.
+See [here](../../reference/plex.md) for more details about Plex account requirements.
 
 ## Usenet or Bittorrent sources
 
@@ -70,6 +75,6 @@ If you are planning to set up a standard Saltbox or a feederbox, you will need a
 
 You won't need these particular [media source] details for the initial install, but you will need them for application setup.
 
-See [here](../../reference/usenet-torrent.md) for more information about media source requirements.
+See [here](../../reference/usenet-torrent.md) for more details about media source requirements.
 
 Next, let's discuss Saltbox [Install types](../basics/install_types.md).

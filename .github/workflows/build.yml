@@ -14,18 +14,22 @@ jobs:
     runs-on: ubuntu-22.04
     if: github.ref == 'refs/heads/main'
     steps:
-    - uses: actions/checkout@v3
-    - uses: BobAnkh/add-contributors@master
-      with:
-        REPO_NAME: 'saltyorg/docs'
-        CONTRIBUTOR: '### Contributors'
-        COLUMN_PER_ROW: '6'
-        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        IMG_WIDTH: '100'
-        FONT_SIZE: '14'
-        PATH: '/README.md'
-        COMMIT_MESSAGE: 'docs(README): update contributors'
-        AVATAR_SHAPE: 'square'
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: BobAnkh/add-contributors@master
+        with:
+          REPO_NAME: 'saltyorg/docs'
+          CONTRIBUTOR: '### Contributors'
+          COLUMN_PER_ROW: '6'
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          IMG_WIDTH: '100'
+          FONT_SIZE: '14'
+          PATH: '/README.md'
+          COMMIT_MESSAGE: 'docs(README): update contributors'
+          AVATAR_SHAPE: 'square'
 
   build:
     runs-on: ubuntu-22.04
@@ -33,11 +37,13 @@ jobs:
     outputs:
       url: ${{ steps.cloudflare.outputs.url }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python 3
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
@@ -47,15 +53,19 @@ jobs:
       - name: Install mkdocs material insiders
         run: pip install git+https://${{ secrets.GH_TOKEN }}@github.com/chazlarson/automaticSpoon.git
 
-      - name: Install lightgallery
-        run: pip install lightgallery
+      - name: Install apt packages
+        run: sudo apt-get install -y pngquant
+
+      - name: Install requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Build mkdocs
         run: mkdocs build
 
       - name: Publish to Cloudflare Pages
+        if: github.event.repository.fork == false
         id: cloudflare
-        uses: cloudflare/pages-action@v1.4.1
+        uses: cloudflare/pages-action@v1.5.0
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: 86b9f680e99b6d172395cc7309a9d8a8
@@ -66,8 +76,8 @@ jobs:
   webhook:
     name: 'webhook'
     runs-on: self-hosted
-    needs: [build]
-    if: always() && github.event_name != 'pull_request'
+    needs: build
+    if: always() && github.event_name != 'pull_request' && github.event.repository.fork == false
     steps:
       - uses: technote-space/workflow-conclusion-action@v3
       - name: Send Discord Notification

@@ -6,7 +6,7 @@ THIS PAGE HAS NOT BEEN FULLY UPDATED FOR SALTBOX
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| :material-home: Project home | [:octicons-link-16: Docs](https://github.com/theotherp/nzbhydra2/wiki){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/theotherp/nzbhydra2){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/hotio/nzbhydra2){: .header-icons target=_blank rel="noopener noreferrer" }|
+| :material-home: Project home | [:octicons-link-16: Docs](https://github.com/theotherp/nzbhydra2/wiki){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/theotherp/nzbhydra2){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/hotio/nzbhydra2){: .header-icons }|
 
 Three Ways to setup NZB indexers with Sonarr/Radarr/Lidarr:
 
@@ -50,4 +50,4 @@ To find the NZBHydra2 API Key, go to "Config" --> "Main". This will be used late
 
 ## 5. Next
 
-Are you setting Saltbox up for the first time?  Continue to [Jackett](../jackett/).
+Are you setting Saltbox up for the first time?  Continue to [Jackett](jackett.md).

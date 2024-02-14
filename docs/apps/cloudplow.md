@@ -4,7 +4,7 @@
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://github.com/l3uddz/cloudplow){: .header-icons target=_blank rel="noopener noreferrer" } | :octicons-link-16: Docs | [:octicons-mark-github-16: Github](https://github.com/l3uddz/cloudplow){: .header-icons target=_blank rel="noopener noreferrer" } | :material-docker: Docker |
+| [:material-home: Project home](https://github.com/l3uddz/cloudplow){: .header-icons } | :octicons-link-16: Docs | [:octicons-mark-github-16: Github](https://github.com/l3uddz/cloudplow){: .header-icons } | :material-docker: Docker |
 
 ## Remote Uploader Function
 
@@ -13,7 +13,7 @@ As setup for Saltbox, Cloudplow uploads all the content in `/mnt/local/Media/` (
 _Note: The size threshold and the check interval can be changed via steps mentioned on this page._
 
 <details>
-<summary>Google Drive Daily Upload Limit (click to expand)</summary><br />
+<summary> Drive Daily Upload Limit (click to expand)</summary><br />
 
 Google Drive has a max upload limit of about 750GB per day. When this limit is reached, Google Drive will put you in a 24 hour soft ban. When Cloudplow detects this (with the phrase `Failed to copy: googleapi: Error 403: User rate limit exceeded`), uploading will be suspended for 25 hours (i.e. a 25 hour ban sleep), and upon waking up, it will resume its checking and uploading tasks. This feature is enabled by default. This method is better than running Rclone task with a `bwlimit`, because you can just upload in bursts when the uploading resumes.
 
@@ -25,7 +25,7 @@ Cloudplow can also use service accounts to upload and work around this limitatio
 
 ## Config
 
-Note that this is an extract from the cloudplow docs and does not cover everythign that cloudplow can do.  Please refer to the Cloudplow github for complete details on available options.
+Note that this is an extract from the cloudplow docs and does not cover everything that cloudplow can do.  Please refer to the Cloudplow github for complete details on available options.
 
 ### Default config.json file
 
@@ -72,9 +72,11 @@ Note: The cloudplow config file is a JSON file.  JSON files have a particular fo
 
 - Note: `max_size_gb` is rounded up, so it is advised to have it minimum `2GB` or else it would attempt upload at each interval. Explanation below.
 
-  - `1GB` is basically anything in there.
+    - Setting this to `1GB` will trigger on anything in the upload directory, since Cloudplow will round, say, 200MB usage up to 1G and trigger an upload.
 
-  - `2GB` is at least 1GB of data.
+    - Setting this to `2GB` will trigger on a little more than 1GB of data in the upload directory, since there needs to be more than 1G there for the value to get rounded up to 2G and trigger the upload.
+
+    - THIS IS ONLY A SIGNIFICANT ISSUE WITH THESE SMALL NUMBERS.  It's not a general "Cloudplow triggers at half the threshold".  This rounding means that the default 200G threshold will actually trigger at 199+G, since 199.2G would get rounded up to 200G.
 
 ### Plex Integration
 
@@ -152,7 +154,7 @@ Cloudplow can pause the Sabnzbd download queue when an upload starts; and then r
 
 ### Service account uploading
 
-You can tell cloudplow to use a set of service accounts when uploading to Google Drive to go past hte daily 750G upload limit.  Details are available [here](https://github.com/l3uddz/cloudplow#uploader), but in a nutshell you will add the `service_account_path` to the uploader:
+You can tell cloudplow to use a set of service accounts when uploading to Google Drive to go past the daily 750G upload limit.  Details are available [here](https://github.com/l3uddz/cloudplow#uploader), but in a nutshell you will add the `service_account_path` to the uploader:
 
 ```json
 "uploader": {
@@ -171,7 +173,7 @@ You can tell cloudplow to use a set of service accounts when uploading to Google
 }
 ```
 
-If you used the saltbox scripted rclone setup, there is a script that will make these changes for you described [here](https://docs.saltbox.dev/reference/cloudplow-config/).
+If you used the saltbox scripted rclone setup, there is a script that will make these changes for you described [here](../reference/cloudplow-config.md).
 
 ### Restart
 
@@ -183,7 +185,7 @@ sudo systemctl restart cloudplow
 
 ## Logs and status
 
-[Details here](https://docs.saltbox.dev/reference/logs/?h=logs#cloudplow)
+[Details here](../reference/logs.md?h=logs#cloudplow)
 
 ## CLI
 

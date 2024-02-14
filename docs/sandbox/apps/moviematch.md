@@ -2,7 +2,7 @@
 
 ## What is it?
 
-[MovieMatch](https://github.com/LukeChannings/moviematch){: target=_blank rel="noopener noreferrer" } is an app that helps you and your friends pick a movie to watch from a Plex server.
+[MovieMatch](https://github.com/LukeChannings/moviematch) is an app that helps you and your friends pick a movie to watch from a Plex server.
 
 MovieMatch connects to your Plex server and gets a list of movies (from any libraries marked as a movie library).
 
@@ -12,7 +12,7 @@ If two (or more) people swipe right on the same movie, it'll show up in everyone
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://github.com/LukeChannings/moviematch){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://github.com/LukeChannings/moviematch){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/LukeChannings/moviematch#readme){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/lukechannings/moviematch){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://github.com/LukeChannings/moviematch){: .header-icons } | [:octicons-link-16: Docs](https://github.com/LukeChannings/moviematch){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/LukeChannings/moviematch#readme){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/lukechannings/moviematch){: .header-icons }|
 
 ### 1. Installation
 
@@ -48,4 +48,4 @@ sb install sandbox-moviematch
 
 MovieMatch will read the config from `/opt/moviematch/config.yaml` by default.
 
-- [:octicons-link-16: Documentation](https://github.com/LukeChannings/moviematch){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation](https://github.com/LukeChannings/moviematch){: .header-icons }

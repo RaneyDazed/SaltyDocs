@@ -46,7 +46,7 @@ TorrentCleanup.py has been explained in the Sonarr section, but in a nutshell, s
 
 ## Frontail - view logs over http
 
-[[frontail|<https://github.com/mthenw/frontail>]] is a Node.js application for streaming logs to the browser (basically a tail -F with an UI).
+[frontail](https://github.com/mthenw/frontail) is a Node.js application for streaming logs to the browser (basically a tail -F with an UI).
 
 This is useful in cases you need help and need to show someone from slack support channels your logs. You can mask your IP using ngrok (more on that later).
 
@@ -70,7 +70,7 @@ frontail --ui-highlight --ui-highlight-preset /opt/scripts/frontail/frontail_cus
 
 Determine your default shell in `settings.yml`
 
-For your default shell, add `shell_<shell>_<shell>rc_block_custom:` to your [Inventory](https://docs.saltbox.dev/saltbox/inventory/) file:
+For your default shell, add `shell_<shell>_<shell>rc_block_custom:` to your [Inventory](../saltbox/inventory/index.md) file:
 Example for Bash (default):
 
 ```yaml

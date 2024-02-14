@@ -2,11 +2,11 @@
 
 ## What is it?
 
-[Komga](https://komga.org/){: target=_blank rel="noopener noreferrer" } is a free and open source comics/mangas server.
+[Komga](https://komga.org/) is a free and open source comics/mangas server.
 
 | Details     |             |             |             |
 |-------------|-------------|-------------|-------------|
-| [:material-home: Project home](https://komga.org/){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-link-16: Docs](https://komga.org/installation/docker.html){: .header-icons target=_blank rel="noopener noreferrer" } | [:octicons-mark-github-16: Github](https://github.com/gotson/komga){: .header-icons target=_blank rel="noopener noreferrer" } | [:material-docker: Docker](https://hub.docker.com/r/gotson/komga){: .header-icons target=_blank rel="noopener noreferrer" }|
+| [:material-home: Project home](https://komga.org/){: .header-icons } | [:octicons-link-16: Docs](https://komga.org/installation/docker.html){: .header-icons } | [:octicons-mark-github-16: Github](https://github.com/gotson/komga){: .header-icons } | [:material-docker: Docker](https://hub.docker.com/r/gotson/komga){: .header-icons }|
 
 ### 1. Installation
 
@@ -29,4 +29,4 @@ sb install sandbox-komga
 
 - `/mnt` is accessible to the container as well.
 
-- [:octicons-link-16: Documentation](https://komga.org/installation/docker.html){: .header-icons target=_blank rel="noopener noreferrer" }
+- [:octicons-link-16: Documentation](https://komga.org/installation/docker.html){: .header-icons }
