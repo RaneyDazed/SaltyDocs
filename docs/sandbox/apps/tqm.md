@@ -13,28 +13,36 @@
 |-------------|
 | [:octicons-mark-github-16: Github](https://github.com/l3uddz/tqm){: .header-icons }|
 
-Recommended install types: Feederbox, Saltbox, Core
-
 ### 1. Setup
 
 Edit in your favorite code editor  (with yaml highlighting) or even a unix editor like nano.
 
-``` shell
+``` shell title="Edit the config file"
 
 nano /opt/tqm/config.yaml
 
 ```
 
-### Modify "Client" section
+#### Modify "Client" section
 
 !!! Note
       📢 As setup for Saltbox, tqm uses this path to find your downloaded files:  `/mnt/unionfs/downloads/...` (see [Paths](../../saltbox/basics/paths.md#media))
 
 Client Example:
 
-```yaml
-
+``` yaml title="/opt/tqm/config.yaml"
 ...
+  qbt:
+    download_path: /mnt/unionfs/downloads/torrents/qbittorrent/completed # (1)!
+    free_space_path: /mnt/local/downloads/torrents/qbittorrent/completed # (2)!
+    download_path_mapping:
+      /mnt/unionfs/downloads/torrents/qbittorrent/completed: /mnt/unionfs/downloads/torrents/qbittorrent/completed
+    enabled: true # (3)!
+    filter: default
+    type: qbittorrent
+    url: http://qbittorrent:8080 # (4)!
+    user: seed # (5)!
+    password: super_strong_password # (6)!
   deluge:
     enabled: false
     filter: default
@@ -48,74 +56,53 @@ Client Example:
     port: 58846
     type: deluge
     v2: true
-  qbt:
-    download_path: /mnt/unionfs/downloads/torrents/qbittorrent/completed
-    free_space_path: /mnt/local/downloads/torrents/qbittorrent/completed
-    download_path_mapping:
-      /mnt/unionfs/downloads/torrents/qbittorrent/completed: /mnt/unionfs/downloads/torrents/qbittorrent/completed
-    enabled: true
-    filter: default
-    type: qbittorrent
-    url: http://qbittorrent:8080
-    user: seed
-    password: super_strong_password
 ...
-
 ```
 
-`download_path:` Where your downloaded files are stored.
+1. `download_path:` Where your downloaded files are stored.
+2. `free_space_path:` Typically the local mergerfs path to show available space.
+3. `enabled:` Set to boolean value (true, false) depending on the client you use.
+4. `url:` Set to the examples equivalent of your client.
+5. `user:` your default user from **accounts.yml**
+6. `password:` your default password from **accounts.yml**
 
-`free_space_path:` Typically the local mergerfs path to show available space.
-
-`enabled:` Set to boolean value (true, false) depending on the client you use.
-
-`url:` Set to the examples equivalent of your client.
-
-`user:` your default user from **accounts.yml**
-
-`password:` your default password from **accounts.yml**
-
-### Modify "Filter" section
+#### Modify "Filter" section
 
 Filter Example:
 
-```yaml
-
+``` yaml title="/opt/tqm/config.yml"
 ...
 filters:
   default:
-    ignore:
+    ignore: # (1)!
       - TrackerName contains "sportscult"
       - TrackerStatus contains "Tracker is down"
       - Label contains "upload"
       - Downloaded == false && !IsUnregistered()
-    remove:
+    remove: # (2)!
       - IsUnregistered()
       - Label contains "-imported" && TrackerName contains "avistaz.to" && (Ratio > 2.0 || SeedingDays >= 21.0)
       - Label contains "-imported" && TrackerName contains "nebulance.io" && SeedingDays >= 6.0
       - Label in ["readarr-imported", "lidarr-imported"] && (Ratio > 5.0 || SeedingDays >= 25.0)
       - Label in ["autoremove-btn"] && (Ratio > 3.0 || SeedingDays >= 15.0)
 ...
-
 ```
 
-`ignore:` Instructs **tqm** to ignore anything defined.
+1. `ignore:` Instructs **tqm** to ignore anything defined.
+2. `remove:` Instructs **tqm** what files to delete based on what is defined in the **filter**.
 
-`remove:` Instructs **tqm** what files to delete based on what is defined in the **filter**.
+Note: There are many ways to do the same thing. Check the **language definitions** for an explanation [here](https://github.com/antonmedv/expr/blob/586b86b462d22497d442adbc924bfb701db3075d/docs/Language-Definition.md).
 
-Note: There are many ways to do the same thing. Check the **language definitions** for an explanation [here](https://github.com/antonmedv/expr/blob/586b86b462d22497d442adbc924bfb701db3075d/docs/Language-Definition.md){: .header-icons }
-
-### Modify "Label" section
+#### Modify "Label" section
 
 Label Example:
 
 ```yaml
-
 ...
     label:
       # Permaseed Animebytes torrents (all must evaluate to true)
-      - name: permaseed-AB
-        update:
+      - name: permaseed-AB # (1)!
+        update: # (2)!
           - SeedingSeconds > 1000.0
           - Label contains "-imported"
           - TrackerName contains "animebytes.tv"
@@ -127,16 +114,14 @@ Label Example:
           - not (Name contains "1080p")
           - len(Files) >= 3
 ...
-
 ```
+
+1. `name:` The category (label) you want the torrent changed to.
+2. `update:` Define what is to be moved by tqm.
 
 !!! Note
       📢 tqm will not create a category for you, so be sure to create the category first. If you
       want the file moved as well, you will need to set **Default Torrent Management Mode: Automatic**.
-
-`name:` The category (label) you want the torrent changed to.
-
-`update:` Define what is to be moved by tqm.
 
 ### Modify the "Settings" file
 
@@ -144,20 +129,20 @@ You can edit the **settings.yml** file in `/opt/sandbox/`. The default is `qbt`,
 
 Shortened example of **settings.yml**:
 
-```yaml
-
+``` yaml title="/opt/sandbox/settings.yml"
 ...
 tandoor:
   secret_key:
 tqm:
-  download_client: "qbt" # Change this to deluge or whatever you specify in config.yaml
+  download_client: "qbt" # (1)!
 transmissionvpn:
   vpn_user:
   vpn_pass:
   vpn_prov:
 ...
-
 ```
+
+1. Set the `download_client` to the client you want to use.
 
 ### 2. Installation
 
@@ -169,7 +154,7 @@ sb install sandbox-tqm
 
 To check the status of the service, you can run:
 
-```shell
+``` shell title="Check the status of the service"
 
 sudo systemctl status tqm.service
 
@@ -177,7 +162,7 @@ sudo systemctl status tqm.service
 
 You can also follow the logs with:
 
-```shell
+``` shell title="Follow the logs"
 
 tail -f /opt/tqm/activity.log
 
