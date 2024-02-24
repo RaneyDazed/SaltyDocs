@@ -168,4 +168,4 @@ tail -f /opt/tqm/activity.log
 
 ```
 
-- [:octicons-link-16: Documentation](https://github.com/l3uddz/tqm#tqm){: .header-icons }
+- [:octicons-link-16: Documentation: TQM Docs](https://github.com/l3uddz/tqm#tqm){: .header-icons }
