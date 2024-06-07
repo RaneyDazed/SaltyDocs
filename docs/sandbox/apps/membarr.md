@@ -45,16 +45,24 @@ sb install sandbox-membarr
 
 When you install the role, it will create 2 files, an `app.db` file and `config.ini`. You will need to edit the `config.ini` file with your preferred editing program. (ie `nano` or `vim` etc) Add your Plex credentials like so:
 
-``` toml
+``` toml title="config.ini"
 [bot_envs]
-plex_user =
-plex_pass =
-plex_server_name = ServerFriendlyName
-plex_roles =
-plex_token = token
-plex_base_url = https://plex.domain.tld
-plex_enabled = True
+plex_user = # (1)!
+plex_pass = # (2)!
+plex_server_name = # (3)!
+plex_roles = # (4)!
+plex_token = # (5)!
+plex_base_url = # (6)!
+plex_enabled = # (7)!
 ```
+
+1. Add your Plex username.
+2. Add your Plex password.
+3. Add your "Friendly Plex Server" name.
+4. Add the roles that you want to be able to invite users to Plex.
+5. Add your Plex token. See below for how to get the Plex token.
+6. Add your Plex base URL. (ie `https://plex.yourdomain.com`)
+7. Set to `true` to enable Plex.
 
 Now restart the Membarr container `docker restart membarr`.
 

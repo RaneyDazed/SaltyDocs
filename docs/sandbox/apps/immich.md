@@ -46,11 +46,13 @@ sb install sandbox-immich
 
 If you would like to have the config file available, create a new config file (e.g. immich.config, and the config format is `.json`) and map it in inventory; just keep in mind that this disallows you from configuring Immich admin settings from the web ui.
 
-``` yaml
+``` yaml title="Inventory"
 
 immich_docker_envs_custom:
-  IMMICH_CONFIG_FILE: "/config/immich.config"
+  IMMICH_CONFIG_FILE: "/config/immich.config" # (1)!
 
 ```
+
+1. This is the path to the config file you created.
 
 - [:octicons-link-16: Documentation: Immich Docs](https://immich.app/docs/overview/introduction){: .header-icons }

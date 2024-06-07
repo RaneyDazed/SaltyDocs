@@ -12,13 +12,21 @@
 
 In `/opt/sandbox/settings.yml`, adjust the following:
 
+``` yaml title="/opt/sandbox/settings.yml"
+
+qbittorrentvpn: # (1)!
+  vpn_pass: your_vpn_password # (2)!
+  vpn_prov: pia # (3)!
+  vpn_user: your_vpn_username # (4)!
+  vpn_client: wireguard # (5)!
+
 ```
-qbittorrentvpn:
-  vpn_pass: your_vpn_password
-  vpn_prov: pia
-  vpn_user: your_vpn_username
-  vpn_client: wireguard
-```
+
+1. This is the name of the role.
+2. This is the password for your VPN provider.
+3. This is the name of your VPN provider.
+4. This is the username for your VPN provider.
+5. This is the client you want to use for your VPN provider.
 
 As described in the github readme linked above, then run the role:
 

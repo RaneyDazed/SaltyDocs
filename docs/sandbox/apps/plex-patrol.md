@@ -32,45 +32,47 @@ After editing the file, restart the container with `docker restart plex_patrol`.
 
 default contents:
 
-```ini
+``` ini title="settings.ini"
+
 [settings]
-# Show debug messages.
-DEBUG = false
-# Plex server url (e.g. http://ip:32400 or https://plex.reverse-proxy.com)
-SERVER_URL = http://plex:32400
-# Plex token for server.
-SERVER_TOKEN = YOUR_TOKEN_WILL_BE_HERE
-# Name of server (does not matter, its used in the logs).
-SERVER_NAME = Saltbox
-# How often to check the active streams in seconds.
-CHECK_INTERVAL = 90
-# instantly kick 4K transcodes?
-KICK_4K_TRANSCODE = true
-# instantly kick video transcodes?
-KICK_VIDEO_TRANSCODES = false
-# Instantly kick audio transcodes?
-KICK_AUDIO_TRANSCODES = false
-# Instantly kick any players from this , separated list?
-KICK_CLIENT_PLAYERS =
-# Instantly kick streams from users with multiple IPs
-KICK_MULTIPLE_IP = true
-# How many streams from unique IPs before kicking extra user streams if above is true.
-KICK_MULTIPLE_IP_MAX = 1
-# Delay kick paused transcodes (direct streams count too)?
-KICK_PAUSED_TRANSCODES = true
-# Delay kick paused direct plays?
-KICK_PAUSED_DIRECTPLAY = true
-# When the options above are true, the user has this many minutes to resume, otherwise kick.
-KICK_PAUSED_GRACE_MINS = 15
+DEBUG = false # (1)!
+SERVER_URL = http://plex:32400 # (2)!
+SERVER_TOKEN = YOUR_TOKEN_WILL_BE_HERE # (3)!
+SERVER_NAME = Saltbox # (4)!
+CHECK_INTERVAL = 90 # (5)!
+KICK_4K_TRANSCODE = true # (6)!
+KICK_VIDEO_TRANSCODES = false # (7)!
+KICK_AUDIO_TRANSCODES = false # (8)!
+KICK_CLIENT_PLAYERS = # (9)!
+KICK_MULTIPLE_IP = true # (10)!
+KICK_MULTIPLE_IP_MAX = 1 # (11)!
+KICK_PAUSED_TRANSCODES = true # (12)!
+KICK_PAUSED_DIRECTPLAY = true # (13)!
+KICK_PAUSED_GRACE_MINS = 15 # (14)!
 # Messages to be displayed for different kick types.
 KICK_4K_TRANSCODE_MESSAGE = You are not allowed to transcode 4K content, fix your settings!
 KICK_PAUSED_MESSAGE = You are not allowed to pause a stream for that long... cya!
 KICK_TRANSCODE_MESSAGE = You are not allowed to transcode streams, use a better client!
 KICK_PLAYER_MESSAGE = You are not allowed to use this trash player. Use the official software from www.plex.tv/downloads -> Get An App!!!
 KICK_MULTI_IP_MESSAGE = You are not allowed to stream from more than 1 IP address!
-# User list separated by a , who are immune from all checks.
-WHITELISTED_USERS =
+WHITELISTED_USERS = # (15)!
 ```
+
+1. Show debug messages.
+2. Plex server url (e.g. `http://plex:32400` or `https://plex.yourdomain.com`)
+3. Plex token for server.
+4. Name of server (does not matter, its used in the logs).
+5. How often to check the active streams in seconds.
+6. Instantly kick 4K transcodes? (true/false)
+7. Instantly kick video transcodes? (true/false)
+8. Instantly kick audio transcodes? (true/false)
+9. Instantly kick any players from this , separated list?
+10. Instantly kick streams from users with multiple IPs (true/false)
+11. How many streams from unique IPs before kicking extra user streams if above is true.
+12. Delay kick paused transcodes (direct streams count too)? (true/false)
+13. Delay kick paused direct plays? (true/false)
+14. When the options above are true, the user has this many minutes to resume, otherwise kick.
+15. User list separated by a , who are immune from all checks.
 
 PLEX_PATROL's log is found at `/opt/plex_patrol/status.log`:
 

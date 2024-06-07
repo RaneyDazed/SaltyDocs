@@ -39,12 +39,17 @@ sb install sandbox-moviematch
   Here's a simple example:
 
   ```YAML
-    host: 0.0.0.0
-    port: 8000
+    host: 0.0.0.0 # (1)!
+    port: 8000 # (2)!
     servers:
-      - url: https://plex.example.com
-        token: abcdef12346
+      - url: # (3)!
+        token: # (4)!
   ```
+
+  1. The host to bind to. It is recommended to leave this as is.
+  2. The port to bind to. It is recommended to leave this as is.
+  3. The URL of your Plex server. ie `https://plex.yourdomain.com`
+  4. The token of your Plex server. See [this](../../reference/plex_auth_token.md) for how to get the Plex token.
 
 MovieMatch will read the config from `/opt/moviematch/config.yaml` by default.
 

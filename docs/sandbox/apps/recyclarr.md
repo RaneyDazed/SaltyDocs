@@ -20,10 +20,12 @@ sb install sandbox-recyclarr
 
 Edit the Recyclarr section in [sandbox `settings.yml`:](../settings.md) and enter your desired update schedule using standard cron syntax.
 
-``` { .yaml }
-     recyclarr:
-       cron_schedule: "@daily"
+``` yaml title="/opt/sandbox/settings.yml"
+recyclarr:
+ cron_schedule: "@daily" # (1)!
 ```
+
+1. This is the cron schedule for Recyclarr to update your Sonarr/Radarr instances. The default is `@daily` which means it will update once a day. You can change this to any valid cron schedule. For example, `0 0 * * *` would update every day at midnight.
 
 !!! note
     If you change this value, you must re-run `sb install sandbox-recyclarr` for it take effect.
@@ -33,20 +35,30 @@ If a config file does not exist, a default config is generated but it is not fun
 - Configure Sonarr section
 
   ``` { .yaml }
-      sonarr:
-        sonarr:
-          base_url: http://sonarr:8989
-          api_key: your_sonarr_api_key
+      sonarr: # (1)!
+        sonarr: # (2)!
+          base_url: http://sonarr:8989 # (3)!
+          api_key: your_sonarr_api_key # (4)!
   ```
+
+  1. This is the name of the service.
+  2. This is the name of the service, ie `sonarr4k`.
+  3. This is the base URL of your Sonarr instance.
+  4. This is the API key of your Sonarr instance.
 
 - Configure Radarr section
 
   ``` { .yaml }
-      radarr:
-        radarr:
-          base_url: http://radarr:7878
-          api_key: your_radarr_api_key
+      radarr: # (1)!
+        radarr: # (2)!
+          base_url: http://radarr:7878 # (3)!
+          api_key: your_radarr_api_key # (4)!
   ```
+
+  1. This is the name of the service.
+  2. This is the name of the service, ie `radarr4k`.
+  3. This is the base URL of your Radarr instance.
+  4. This is the API key of your Radarr instance.
 
 Follow documentation to complete configuration
 

@@ -85,24 +85,44 @@ sb install sandbox-qbit-manage
 
 The following variables are available to set in the sandbox settings.yml file. An explanation of [these settings can be found here](https://github.com/StuffAnThings/qbit_manage/wiki/Docker-Installation).
 
-```yaml
-qbit_manage:
-  qbt_run: "false" # Default is "false"
-  qbt_schedule: "30" # Default is "30"
-  qbt_config: "config.yml" # Default is "config.yml"
-  qbt_logfile: "activity.log" # Default is "activity.log"
-  qbt_cross_seed: "false" # Default is "false"
-  qbt_recheck: "false" # Default is "false"
-  qbt_cat_update: "false" # Default is "false"
-  qbt_tag_update: "false" # Default is "false"
-  qbt_rem_unregistered: "false" # Default is "false"
-  qbt_rem_orphaned: "false" # Default is "false"
-  qbt_tag_nohardlinks: "false" # Default is "false"
-  qbt_skip_recycle: "false" # Default is "false"
-  qbt_dry_run: "true" # Default is "false"
-  qbt_log_level: "INFO" # Default is "INFO"
-  qbt_divider: "=" # Default is "="
-  qbt_width: "100" # Default is "100"
+``` yaml title="settings.yml"
+
+qbit_manage: # (1)!
+  qbt_run: "false" # (2)!
+  qbt_schedule: "30" # (3)!
+  qbt_config: "config.yml" # (4)!
+  qbt_logfile: "activity.log" # (5)!
+  qbt_cross_seed: "false" # (6)!
+  qbt_recheck: "false" # (7)!
+  qbt_cat_update: "false" # (8)!
+  qbt_tag_update: "false" # (9)!
+  qbt_rem_unregistered: "false" # (10)!
+  qbt_rem_orphaned: "false" # (11)!
+  qbt_tag_nohardlinks: "false" # (12)!
+  qbt_skip_recycle: "false" # (13)!
+  qbt_dry_run: "true" # (14)!
+  qbt_log_level: "INFO" # (15)!
+  qbt_divider: "=" # (16)!
+  qbt_width: "100" # (17)!
+
 ```
+
+1. The name of the role.
+2. Run without the scheduler. Script will exit after completion.
+3. The time in minutes to run the script.
+4. The name of the config file.
+5. The name of the log file.
+6. Enable cross-seed function.
+7. Recheck paused torrents sorted by lowest size. Resume if Completed.
+8. Use this if you would like to update your categories or move from one category to another based on the save directory.
+9. Use this if you would like to tag your torrents based on the tracker and then set seed goals/limit upload speed by tag.
+10. Remove unregistered torrents (delete data & torrent if it is not being cross-seeded, otherwise it will just remove the torrent).
+11. Remove orphaned files from your root directory that are not referenced by qBittorrent.
+12. Tag any torrents that have no hard links and allows optional cleanup to delete these torrents and contents based on maximum ratio and/or time seeded.
+13. Use this if you would like to move files into a RecycleBin folder instead of deleting the data directly when deleting a torrent.
+14. Run the script in dry run mode. This will not delete or move any files.
+15. The log level to use. (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+16. The divider to use in the log file.
+17. Screen Width for the log file.
 
 - [:octicons-link-16: Documentation: qBit Management Docs](https://github.com/StuffAnThings/qbit_manage/wiki){: .header-icons }
