@@ -62,9 +62,12 @@ theme:
 
 plugins:
   - privacy:
-      assets: false
+      enabled: !ENV [CI, false]
+      cache: true
+      cache_dir: .cache/plugin/privacy
+      assets: true
+      assets_fetch: true
       links_attr_map:
-        rel: noreferrer
         target: _blank
       links_noopener: true
   - search:
@@ -72,7 +75,7 @@ plugins:
   - meta
   - optimize:
       cache: true
-      cache_dir: .cache/plugins/optimize
+      cache_dir: .cache/plugin/optimize
       enabled: !ENV [CI, false]
       optimize_png: true
       optimize_png_speed: 1
@@ -81,6 +84,13 @@ plugins:
       optimize_jpg_quality: 75
       optimize_jpg_progressive: true
   - git-revision-date-localized
+  - minify:
+      minify_html: true
+  - git-committers:
+      enabled: !ENV [CI, false]
+      cache_dir: .cache/plugin/git-committers/
+      repository: saltyorg/docs
+      branch: main
 
 extra:
   generator: false
@@ -238,8 +248,8 @@ nav:
           - Metadata Management:
             - Alternatrr: sandbox/apps/alternatrr.md
             - Alternatrrx: sandbox/apps/alternatrrx.md
+            - Kometa: sandbox/apps/kometa.md
             - MKVToolNix: sandbox/apps/mkvtoolnix.md
-            - Plex Meta Manager: sandbox/apps/plex-meta-manager.md
             - Plex-Utills: sandbox/apps/plex-utills.md
             - Python-plexlibrary: sandbox/apps/python-plexlibrary.md
             - Unmanic: sandbox/apps/unmanic.md
@@ -298,6 +308,7 @@ nav:
           - Guacamole: sandbox/apps/guacamole.md
           - Handbrake: sandbox/apps/handbrake.md
           - Influxdb: sandbox/apps/influxdb.md
+          - Influxdb2: sandbox/apps/influxdb2.md
           - Invoice Ninja: sandbox/apps/invoiceninja.md
           - Home Automation:
             - Home Assistant: sandbox/apps/homeassistant.md
@@ -397,6 +408,7 @@ nav:
       - Plex Autoscan: faq/Plex-Autoscan.md
       - ruTorrent: faq/ruTorrent.md
       - Misc: faq/Misc.md
+      - sb: faq/sb.md
 
   - Advanced:
       - Index: advanced/index.md
@@ -433,6 +445,7 @@ nav:
         - Dropbox:
           - General Dropbox Topics: reference/guides/dropbox-general.md
         - Rclone:
+          - Creating an Rclone remote: reference/guides/rclone-remote-generic.md
           - Creating a Dropbox remote: reference/guides/rclone-remote-dropbox.md
           - Creating a Google remote: reference/guides/rclone-remote.md
           - Creating a Crypt remote: reference/guides/rclone-remote-encrypted.md
