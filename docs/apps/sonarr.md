@@ -63,7 +63,7 @@ Make changes in the following sections:
                 for more examples and discussion see the reference: https://trash-guides.info/Sonarr/Sonarr-recommended-naming-scheme/
                 </details>
 
-                The TRaSH naming guide is recommended since some other tools, notably Plex Meta Manager, expect it in their default setup.
+                The TRaSH naming guide is recommended since some other tools, notably Kometa, expect it in their default setup.
 
 
                 <details>
@@ -385,6 +385,13 @@ Make changes in the following sections:
 
 
         === "Autoscan"
+
+            IMPORTANT:  The Sonarr UI may differ from what is shown here; there may be additional events listed in the UI.  
+
+            GENERALLY SPEAKING, if you have events listed that are not explicitly listed below, LEAVE THEM UNCHECKED.  Such events will generate errors in the autoscan logs; those errors can be ignored, but they are errors and can cause panic and confusion.
+
+            MORE SPECIFICALLY, Autoscan is expecting a request that points to an individual file that is ready for Plex. so any event you may have that refers to a show being added, manual intervention, or anything else that is not "this specific video file ON DISK was imported/upgraded/deleted/etc", LEAVE IT UNCHECKED.
+
 
             1. Click "Settings" -> "Connect".
 

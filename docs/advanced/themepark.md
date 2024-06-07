@@ -7,9 +7,9 @@ tags:
 
 # Themepark Styles
 
-Saltbox can apply themes from [ThemePark](https://docs.theme-park.dev/theme-options/) to supported applications through the inventory. Applications that can support `cont-init.d` scripts will utilize scripts that modify the CSS within the source files. Support is also available for additional apps via the [Traefik Plugin](https://github.com/packruler/traefik-themepark) which performs CSS replacement at the reverse proxy (rather than application) level.
+Saltbox can apply themes from [ThemePark](https://docs.theme-park.dev/theme-options/) to supported applications through the inventory. Themes are applied via the [Traefik Plugin](https://github.com/packruler/traefik-themepark) which performs CSS replacement at the reverse proxy (rather than application) level.
 
-Plugin note: You must run `sb install traefik` once after setting `global_themepark_plugin_enabled: "true"` in order to provision the theme middlewares.
+Plugin note: You must run `sb install traefik` once after setting `global_themepark_plugin_enabled: true` in order to provision the theme middlewares.
 
 For example:
 
@@ -82,3 +82,9 @@ maroon
 ```
 
 Note: If you are utilizing Theme.Park on any roles, you must run `sb install traefik` after changing any themes via inventory variables.
+
+List of roles that support Theme.Park on the Saltbox side can be found by running:
+
+```shell
+(grep -Ril "_themepark_enabled: false" /srv/git/saltbox/roles | cut -d/ -f6; grep -Ril "_themepark_enabled: false" /opt/sandbox/roles | cut -d/ -f5) | sort -u
+```

@@ -12,9 +12,9 @@ tags:
 If you're migrating from Cloudbox you probably want the [Cloudbox migration instructions](../../reference/guides/cloudbox.md)
 
 !!! warning
-    The Saltbox install is expecting a fresh new install of Ubuntu.  DO NOT try to install it on your existing Cloudbox, PTS or other system-wide setup.
+    The Saltbox install is expecting a fresh new install of Ubuntu. DO NOT try to install it on your existing Cloudbox, PTS or other system-wide setup.
 
-Please read through these steps prior to executing any of them, just to get a grounding in what is going to happen through out the process.  It could be that things in later steps inform your decisions in earlier steps.
+Please read through these steps prior to executing any of them, just to get a grounding in what is going to happen through out the process. It could be that things in later steps inform your decisions in earlier steps.
 
 Broadly, the base install consists of six steps:
 
@@ -28,9 +28,9 @@ Broadly, the base install consists of six steps:
 ALL STEPS ARE REQUIRED
 
 !!! warning
-    There is no "uninstall" available.  To uninstall Saltbox entirely, you will need to wipe the machine and reinstall the OS.  You can remove all the containers, services, data, and the like, but there is no tracking of applications and packages that are installed in the OS.
+    There is no "uninstall" available. To uninstall Saltbox entirely, you will need to wipe the machine and reinstall the OS. You can remove all the containers, services, data, and the like, but there is no tracking of applications and packages that are installed in the OS.
 
-However, it is safe to run any saltbox tag[s] [including the install tags] at will.  Existing configurations are not overwritten [except for some "reset" tags and the "mounts" tag].
+However, it is safe to run any saltbox tag[s] [including the install tags] at will. Existing configurations are not overwritten [except for some "reset" tags and the "mounts" tag].
 
 ## Step 1: Dependencies
 
@@ -133,7 +133,7 @@ To edit any of the following configuration files use the command written in the 
 
     6. Plex.tv username or email address on the account.
 
-    7. Plex.tv password for the account.  It should be wrapped in quotes if it contains any non alphanumeric characters.
+    7. Plex.tv password for the account. It should be wrapped in quotes if it contains any non alphanumeric characters.
 
     8. Username that will be created (if it doesn't exist) during the installation and apps that have automatic user configuration.
 
@@ -178,9 +178,9 @@ To edit any of the following configuration files use the command written in the 
             upload: yes # (10)!
             upload_from: /mnt/local/Media # (11)!
             vfs_cache:
-                enabled: no # (12)!
-                max_age: 504h # (13)!
-                size: 50G # (14)!
+              enabled: no # (12)!
+              max_age: 504h # (13)!
+              size: 50G # (14)!
         - remote: dropbox
           settings:
             mount: yes
@@ -246,7 +246,7 @@ To edit any of the following configuration files use the command written in the 
         
         We recommend having the template file in a folder in /opt so that it moves with your install after a restore.
 
-    9. Toggles whether you want this remote mount included in the union at `/mnt/unionfs`.  This requires that `mount` be enabled.
+    9. Toggles whether you want this remote mount included in the union at `/mnt/unionfs`. This requires that `mount` be enabled.
 
     10. Toggles whether you intend to upload to this remote using Cloudplow.
 
@@ -282,24 +282,21 @@ To edit any of the following configuration files use the command written in the 
       json_driver: no # (4)!
     gpu:
       intel: yes # (5)!
-      nvidia: no # (6)!
     mounts:
-      ipv4_only: no # (7)!
+      ipv4_only: no # (6)!
     system:
-      timezone: auto # (8)!
+      timezone: auto # (7)!
     traefik:
       cert:
-        http_validation: no # (9)!
-        zerossl: no # (10)!
-      error_pages: no # (11)!
-      hsts: no # (12)!
-      metrics: no # (13)!
-      provider: cloudflare # (14)!
+        http_validation: no # (8)!
+        zerossl: no # (9)!
+      error_pages: no # (10)!
+      hsts: no # (11)!
+      metrics: no # (12)!
+      provider: cloudflare # (13)!
       subdomains:
-        dash: dash # (15)!
-        jaeger: jaeger # (16)!
-        metrics: metrics # (17)!
-      tracing: no # (18)!
+        dash: dash # (14)!
+        metrics: metrics # (15)!
     ```
 
     1. Toggles Saltbox management of IPv4 A records with Cloudflare.
@@ -340,11 +337,9 @@ To edit any of the following configuration files use the command written in the 
 
     5. Toggles any tasks related to using Intel GPUs.
 
-    6. Toggles any tasks related to using Nvidia GPU.
+    6. Toggles whether Rclone should be limited to IPv4 in case routing over IPv6 is bad to the destination of your configured remotes.
 
-    7. Toggles whether Rclone should be limited to IPv4 in case routing over IPv6 is bad to the destination of your configured remotes.
-
-    8. Configures the timezone used for the server and containers.
+    7. Configures the timezone used for the server and containers.
 
         Default is `auto` which will attempt to pick the timezone based on Geolocation of the server.
 
@@ -354,31 +349,27 @@ To edit any of the following configuration files use the command written in the 
         ```
         Alternatively you can find a table on [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 
-    9. Toggles whether Traefik is configured to use HTTP-01 certificate validation.
+    8. Toggles whether Traefik is configured to use HTTP-01 certificate validation.
 
         This toggle is only useful for those using any of the supported DNS validation methods as this will be enabled by default otherwise.
 
-    10. Toggles whether certificates will be issued by ZeroSSL instead of Let's Encrypt.
+    9. Toggles whether certificates will be issued by ZeroSSL instead of Let's Encrypt.
 
-    11. Toggles custom Traefik error pages.
+    10. Toggles custom Traefik error pages.
 
         See [here](../../advanced/styled-error-pages.md) for configuration details.
 
-    12. Toggles the use of [HSTS](https://developer.mozilla.org/en-US/docs/Glossary/HSTS).
+    11. Toggles the use of [HSTS](https://developer.mozilla.org/en-US/docs/Glossary/HSTS).
 
-    13. Toggles the use of Traefik's Prometheus metrics endpoint, accessible at `https://metrics.domain.tld/prometheus` assuming default settings.
+    12. Toggles the use of Traefik's Prometheus metrics endpoint, accessible at `https://metrics.domain.tld/prometheus` assuming default settings.
 
-    14. Allows alternate DNS validation providers supported by Traefik.
+    13. Allows alternate DNS validation providers supported by Traefik.
 
         Implemented ones are listed [here](https://github.com/saltyorg/Saltbox/blob/master/defaults/providers.yml.default).
 
-    15. Defines which subdomain the Traefik dashboard will be accessible at.
+    14. Defines which subdomain the Traefik dashboard will be accessible at.
 
-    16. Defines which subdomain the Traefik Jaeger endpoint will be accessible at.
-
-    17. Defines which subdomain the Traefik Prometheus metrics endpoint will be accessible at.
-
-    18. Toggles the use of Jaeger (tracing) with Traefik.
+    15. Defines which subdomain the Traefik Prometheus metrics endpoint will be accessible at.
 
 !!! info
     See [here](../../reference/accounts.md) for more information about these settings.
@@ -395,9 +386,14 @@ sb install preinstall
 ```
 
 !!! warning
-    From this point you'll want to make sure you run commands as the user specified in the accounts.yml
+    From this point you'll want to make sure you run commands as the user specified in the `accounts.yml`
 
-If your server did not need to reboot you can run `su username` to switch user or reconnect to SSH as the newly created user. Everything after this point will assume you are running as the user entered in accounts.yml
+If the server rebooted due to a kernel update, reconnect via SSH **as the user specified in `accounts.yml`.** 
+
+If your server did not need to reboot, **and the user in `accounts.yml` is different from the user as whom you are currently connected to the server** you can run `su username` to switch user or disconnect and reconnect to SSH as the newly created user. Everything after this point will assume you are running as the user entered in `accounts.yml`
+
+!!! info
+    If you are installing on a machine where you created a user as part of the ubuntu install, you are currently logged in as that user, and you entered that same user into `accounts.yml`, you **do not** have to run `su username` or reconnect to SSH as that user, and probably should not. You are already logged in as the "saltbox user", and you can just move on to the next step. The `su username` or reconnect are typically required only on remote systems where you may be currently connected as `root`.
 
 !!! info
     See [here](../../reference/preinstall.md) for more information about the preinstall.
@@ -407,67 +403,40 @@ If your server did not need to reboot you can run `su username` to switch user o
 !!! warning
     As noted in the previous step, from this point you'll want to make sure you are logged into the server as the user specified in the `accounts.yml`.
 
-    TO BE PERFECTLY CLEAR: FORGET THAT THE ROOT USER EXISTS.  DO NOT LOG INTO YOUR SALTBOX MACHINE AS ROOT ANY MORE.
+    TO BE PERFECTLY CLEAR: FORGET THAT THE ROOT USER EXISTS. DO NOT LOG INTO YOUR SALTBOX MACHINE AS ROOT ANY MORE.
 
-    IF YOU THINK THIS DOESN'T APPLY TO YOU, THINK HARD ABOUT WHY YOU HAVE THAT IMPRESSION.  ALMOST CERTAINLY YOU ARE MISTAKEN.
+    IF YOU THINK THIS DOESN'T APPLY TO YOU, THINK HARD ABOUT WHY YOU HAVE THAT IMPRESSION. ALMOST CERTAINLY YOU ARE MISTAKEN.
 
 !!! info
     THIS IS AN OPTIONAL STEP, required only if you plan to use cloud storage [Google Drive, for instance]
 
     If you do not plan to use cloud storage, set the `rclone -> enabled: false` setting in your `settings.yml`, and skip this step.
 
-If you already know how to set up an rclone remote pointing at cloud storage, do so with your usual methods.  If not, here are five options.
+If you already know how to set up an rclone remote pointing at cloud storage, do so with your usual methods. If not, here are five options.
 
 Note that generally speaking these five options are mutually exclusive.
 
 === "Cloudbox User"
     This option is aimed at you if you are migrating your cloudbox setup.
     
-    You already have the required setup complete.  You should use your existing Google setup at least to start with.
+    You already have the required setup complete. You should use your existing Google setup at least to start with.
     
-    Generally, migrating from Cloudbox to Saltbox involves restoring a Cloudbox backup.  If you do not have a Cloudbox backup, but *do* have data on Google Drive from Cloudbox, go to the "Media on Google Drive" tab to the right.
+    Generally, migrating from Cloudbox to Saltbox involves restoring a Cloudbox backup. If you do not have a Cloudbox backup, but *do* have data on Google Drive from Cloudbox, go to the "Media on Google Drive" tab to the right.
 
     [Cloudbox migration instructions](../../reference/guides/cloudbox.md)
 
 === "I have media on cloud storage"
     This option is aimed at you if you are using some other setup with an rclone-based connection to cloud storage.
     
-    You probably already have the required setup complete.  You should use your existing setup at least to start with.
+    You probably already have the required setup complete. You should use your existing setup at least to start with.
 
-    You will need to enter details of your remote[s] into `settings.yml`.  If you have custom mount services, you can use them instead of one of the supplied templates.  If not, perhaps start with the `google` template to see if it's "good enough".
+    You will need to enter details of your remote[s] into `settings.yml`. If you have custom mount services, you can use them instead of one of the supplied templates. If not, perhaps start with the `google` template to see if it's "good enough".
 
-    If you have lost your rclone config and need to recreate it, go to the "minimal setup" tab to the right.  In step one, you can probably download the existing credential.
+    If you have lost your rclone config and need to recreate it, go to the "minimal setup" tab to the right. In step one, you can probably download the existing credential.
 
     [Other migration notes](../../reference/guides/other.md)
 
-=== "I'm totally new to this"
-    This option is aimed at you if you are starting totally from scratch and want to be walked through the whole setup.
-
-    IMPORTANT: GOOGLE HAS MADE CHANGES THAT RENDER THIS PROCESS LARGELY POINTLESS.  IF YOU ARE A BRAND NEW GOOGLE USER, PROBABLY BEST TO PRETEND YOU NEVER SAW THIS.
-    
-    IF YOU ARE MIGRATING FROM ANY OTHER RCLONE-BASED GOOGLE SETUP YOU SHOULD NOT DO THIS.
-
-    === "Google Drive"
-
-        THIS IS ASSUMING YOU HAVE NO EXISTING MEDIA ON GOOGLE DRIVE OR ANYTHING ELSE.
-
-        IF YOU ARE STARTING FRESH LATER THAN JUNE 2023 YOU PROBABLY DON'T WANT TO GO THROUGH THIS.  Changes to Google's "unlimited" offering have made this mostly needless and obsolete.
-
-        If you have a brand new Google Drive account and want to be walked through all the steps you need to perform, start [here](../../reference/rclone.md)
-
-        That's an eight-step process that is mostly copy-paste commands.  When you have completed it, come back here.
-
-        That eight-step process will create seven shared drives, 300 service accounts, and will configure rclone for you.
-
-        IF THAT IS MORE THAN YOU HAD IN MIND, TAKE A LOOK AT THE "MINIMAL SETUP" TO THE RIGHT.
-
-        This should be enough capacity for quite a while for most users.
-
-    === "Dropbox"
-
-        Create rclone remote[s] pointing at Dropbox as described [here](../../reference/guides/rclone-remote-dropbox.md)
-
-=== "Minimal setup, please"
+=== "Basic setup, please"
     IF YOU ARE MIGRATING FROM ANY OTHER RCLONE-BASED SETUP THIS IS PROBABLY NOT WHAT YOU WANT.
 
     === "Google Drive"
@@ -475,15 +444,15 @@ Note that generally speaking these five options are mutually exclusive.
         The simplest possible case is:
 
         1. Set up a Google Project and OAuth Credential file if you don't already have one.
-        This process is described [here](../../reference/google-project-setup.md).  You will need the ID and Secret from that process in step 3 below.  That link takes you to one step in a multi-step process.  Don't continue to follow that.  Follow the steps on that page and then come back here.
+        This process is described [here](../../reference/google-project-setup.md). You will need the ID and Secret from that process in step 3 below. That link takes you to one step in a multi-step process. Don't continue to follow that. Follow the steps on that page and then come back here.
         2. Create a Shared Drive in the Google Web UI. [optional]
         If you don't want to use a shared drive, skip this step, but know that some pieces of saltbox [notably drive monitoring in autoscan] won't work.
-        This process is described [here](../../reference/guides/google-shared-drive.md).  If your Google account doesn't let you create shared drives, it's not the type af account we are assuming, and other things may not work as well.
+        This process is described [here](../../reference/guides/google-shared-drive.md). If your Google account doesn't let you create shared drives, it's not the type af account we are assuming, and other things may not work as well.
         3. Create an rclone remote with those credentials.
         This process is described [here](../../reference/guides/rclone-remote.md).
         4. enter details about that remote in `settings.yml`
 
-        Note: that mentions shared drives since that's our recommendation.  If you want to point that remote at My Drive you can of course do so.
+        Note: that mentions shared drives since that's our recommendation. If you want to point that remote at My Drive you can of course do so.
         
         Note: This is the SIMPLEST POSSIBLE CASE as noted above; it doesn't discuss service accounts or multiple disks because it's the SIMPLEST POSSIBLE CASE.
 
@@ -492,15 +461,24 @@ Note that generally speaking these five options are mutually exclusive.
         1. Create rclone remote[s] pointing at Dropbox as described [here](../../reference/guides/rclone-remote-dropbox.md)
         2. enter remote details in `settings.yml`
 
+    === "Other Cloud Storage"
+
+        Rclone supports a variety of [cloud storage providers](https://rclone.org/overview/).  This does not imply that any or all cloud storage providers are suitable for the saltbox use case.
+
+        You will need to perform two steps:
+        
+        1. Create an rclone remote pointing at your cloud storage as described [here](../../reference/guides/rclone-remote-generic.md)
+        2. enter those remote details in `settings.yml`
+
 Once you have set up your rclone remote[s], enter their details in `settings.yml` as discussed above in Step 2.
 
 !!! warning
-    Do not proceed until you have fully configured your rclone remote[s] in `rclone config` or disabled cloud storage in the settings.
+    Do not proceed until you have fully configured your rclone remote[s] as described above or disabled cloud storage in the settings.
 
 ## Step 5: Saltbox
 
 !!! info
-    You must run at least `core` prior to *any other* Saltbox tag; if you run any other tag prior to running `core`, you will see a variety of odd errors.  You need to run one of these options as shown below before moving on or installing any other tags/apps.
+    You must run at least `core` prior to *any other* Saltbox tag; if you run any other tag prior to running `core`, you will see a variety of odd errors. You need to run one of these options as shown below before moving on or installing any other tags/apps.
 
 !!! warning
     Have you either disabled rclone OR set up your remotes in both `rclone config` and `settings.yml`?  If not, go back and fix that.
@@ -511,7 +489,7 @@ You can get a list of available install tags with `sb list`.
 
 === "Saltbox"
 
-    `saltbox` is an all-in-one media server for downloading and playback.  It installs `core` and a set of application as described [here](../basics/install_types.md)
+    `saltbox` is an all-in-one media server for downloading and playback. It installs `core` and a set of application as described [here](../basics/install_types.md)
     
     ```shell
     sb install saltbox
@@ -520,7 +498,7 @@ You can get a list of available install tags with `sb list`.
 
 === "Mediabox [playback]"
 
-    `mediabox` is just the parts required for playback.  It installs `core` and a set of application as described [here](../basics/install_types.md)
+    `mediabox` is just the parts required for playback. It installs `core` and a set of application as described [here](../basics/install_types.md)
     
     ```shell
     sb install mediabox
@@ -529,7 +507,7 @@ You can get a list of available install tags with `sb list`.
 
 === "Feederbox [downloading]"
 
-    `feederbox` is just the parts required for downloading.  It installs `core` and a set of application as described [here](../basics/install_types.md)
+    `feederbox` is just the parts required for downloading. It installs `core` and a set of application as described [here](../basics/install_types.md)
     
     ```shell
     sb install feederbox
@@ -538,7 +516,7 @@ You can get a list of available install tags with `sb list`.
 
 === "Core [minimal]"
 
-    `core` is the bare minimum required for saltbox.  It installs the basics as described [here](../basics/install_types.md)
+    `core` is the bare minimum required for saltbox. It installs the basics as described [here](../basics/install_types.md)
     
     ```shell
     sb install core
@@ -568,7 +546,7 @@ If you would like to configure cloudplow to use service accounts to exceed Googl
 Go through these one at a time in order; some of the setups depend on previous setups.
 
 !!! info
-    This list is what's installed if you've run the `saltbox` tag.  If you ran `core`, none of these are installed; if you ran `feederbox` or `mediabox` you have a subset of these.
+    This list is what's installed if you've run the `saltbox` tag. If you ran `core`, none of these are installed; if you ran `feederbox` or `mediabox` you have a subset of these.
 
 1. [SABnzbd](../../apps/sabnzbd.md)
 1. [qBittorrent](../../apps/qbittorrent.md)
@@ -585,6 +563,6 @@ Go through these one at a time in order; some of the setups depend on previous s
 1. [Organizr](../../apps/organizr.md)
 
 !!! info
-    These are not all the available applications, just the core set that are installed by the `saltbox` tag.  Click on the "Apps" header at the top for a full listing of applications available in Saltbox.  Click the "Sandbox" heading for a listing of commmunity-supplied applications.
+    These are not all the available applications, just the core set that are installed by the `saltbox` tag. Click on the "Apps" header at the top for a full listing of applications available in Saltbox. Click the "Sandbox" heading for a listing of commmunity-supplied applications.
 
 Next, some tasks to perform [after installation is complete](after.md).
