@@ -8,6 +8,7 @@ tags:
 
 # Sandbox - All Apps Index
 
+- **[actualbudget](../sandbox/apps/actualbudget.md)**  - tag - `sandbox-actualbudget`
 - **[adguardhome](../sandbox/apps/adguardhome.md)**  - tag - `sandbox-adguardhome`
 - **[adminer](../sandbox/apps/adminer.md)**  - tag - `sandbox-adminer`
 - **[airdcpp](../sandbox/apps/airdcpp.md)**  - tag - `sandbox-airdcpp`
@@ -37,6 +38,9 @@ tags:
 - **[duplicati](../sandbox/apps/duplicati.md)**  - tag - `sandbox-duplicati`
 - **[embystat](../sandbox/apps/embystat.md)**  - tag - `sandbox-embystat`
 - **[epms](../sandbox/apps/epms.md)**  - tag - `sandbox-epms`
+- **[factorio](../sandbox/apps/factorio.md)**  - tag - `sandbox-factorio`
+- **[fireflyiii](../sandbox/apps/fireflyiii.md)** - tag - `sandbox-firefly`
+- **[fireflyiii_importer](../sandbox/apps/fireflyiii_importer.md)** - tag - `sandbox-firefly_importer`
 - **[filebot](../sandbox/apps/filebot.md)**  - tag - `sandbox-filebot`
 - **[filebrowser](../sandbox/apps/filebrowser.md)**  - tag - `sandbox-filebrowser`
 - **[filezilla](../sandbox/apps/filezilla.md)**  - tag - `sandbox-filezilla`
@@ -75,6 +79,7 @@ tags:
 - **[linkding](../sandbox/apps/linkding.md)**  - tag - `sandbox-linkding`
 - **[logarr](../sandbox/apps/logarr.md)**  - tag - `sandbox-logarr`
 - **[makemkv](../sandbox/apps/makemkv.md)**  - tag - `sandbox-makemkv`
+- **[maintainerr](../sandbox/apps/maintainerr.md)**  - tag - `sandbox-maintainerr`
 - **[mcrouter](../sandbox/apps/mcrouter.md)**  - tag - `sandbox-mcrouter`
 - **[medusa](../sandbox/apps/medusa.md)**  - tag - `sandbox-medusa`
 - **[membarr](../sandbox/apps/membarr.md)**  - tag - `sandbox-membarr`
@@ -99,7 +104,6 @@ tags:
 - **[pgadmin](../sandbox/apps/pgadmin.md)**  - tag - `sandbox-pgadmin`
 - **[photoprism](../sandbox/apps/photoprism.md)**  - tag - `sandbox-photoprism`
 - **[plex_auto_languages](../sandbox/apps/plex-auto-languages.md)**  - tag - `sandbox-plex-auto-languages`
-- **[plex_autoscan](../sandbox/apps/plex-autoscan.md)**  - tag - `sandbox-plex-autoscan`
 - **[plex_dupefinder](../sandbox/apps/plex-dupefinder.md)**  - tag - `sandbox-plex-dupefinder`
 - **[plex_patrol](../sandbox/apps/plex-patrol.md)**  - tag - `sandbox-plex-patrol`
 - **[plextraktsync](../sandbox/apps/plextraktsync.md)**  - tag - `sandbox-plextraktsync`
@@ -120,6 +124,7 @@ tags:
 - **[rfloodx](../sandbox/apps/rfloodx.md)**  - tag - `rfloodx`
 - **[rocketchat](../sandbox/apps/rocketchat.md)**  - tag - `rocketchat`
 - **[sabthrottle](../sandbox/apps/sabthrottle.md)**  - tag - `sandbox-sabthrottle`
+- **[semaphoreui](../sandbox/apps/semaphoreui.md)**  - tag - `sandbox-semaphoreui`
 - **[sarotate](../sandbox/apps/sarotate.md)**  - tag - `sandbox-sarotate`
 - **[speedtest](../sandbox/apps/speedtest.md)**  - tag - `sandbox-speedtest`
 - **[sqlitebrowser](../sandbox/apps/sqlitebrowser.md)**  - tag - `sandbox-sqlitebrowser`
@@ -132,6 +137,7 @@ tags:
 - **[tdarr_node](../sandbox/apps/tdarr-node.md)**  - tag - `sandbox-tdarr-node`
 - **[teamspeak](../sandbox/apps/teamspeak.md)**  - tag - `sandbox-teamspeak`
 - **[telegraf](../sandbox/apps/telegraf.md)**  - tag - `sandbox-telegraf`
+- **[teslamate](../sandbox/apps/teslamate.md)**  - tag - `sandbox-teslamate`
 - **[thelounge](../sandbox/apps/thelounge.md)**  - tag - `sandbox-thelounge`
 - **[threadfin](../sandbox/apps/threadfin.md)**  - tag - `sandbox-threadfin`
 - **[tika](../sandbox/apps/tika.md)**  - tag - `sandbox-tika`

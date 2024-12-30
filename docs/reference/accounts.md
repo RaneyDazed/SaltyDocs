@@ -10,7 +10,7 @@ tags:
 # Accounts and Settings
 
 !!! warning
-    This is a reference discussing an aspect of the [install process](../saltbox/install/install.md#configuration).
+    This is a reference discussing an aspect of the [install process](../saltbox/install/install.md#step-2-configuration).
     If you are looking for the steps to follow to install, they are [here](../saltbox/install/install.md).
 
 On this page, we break down the options available in the following files:
@@ -60,7 +60,7 @@ Each tab shows a "section" in the file.
 
     `email`: E-mail address used for the Cloudflare account.
 
-    `api`: [Global API Key](domain.md#cloudflare-api-key).
+    `api`: [Global API Key](domain.md#get-a-free-cloudflare-api-key).
 
     These parameters are optional.
     Default is blank.
@@ -171,6 +171,7 @@ Each tab shows a "section" in the file.
       remotes:
         - remote: google
           settings:
+            enable_refresh: no
             mount: yes
             template: google
             union: yes
@@ -209,6 +210,8 @@ Each tab shows a "section" in the file.
     ```
 
     `remotes/remote`: The name of the rclone remote for this mount. You can also specify a path to use for the remote. `remote: "google:Media"` or `remote: "my-sftp:/path/to/my/files"`  Quotes are important.
+
+    `remotes/settings/enable_refresh`: Toggles whether this remote required a refresh service to look for new files [for example, an `sftp` remote].
 
     `remotes/settings/mount`: Toggles whether you want this remote mounted in the file system.
 

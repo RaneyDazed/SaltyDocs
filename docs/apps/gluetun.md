@@ -23,15 +23,18 @@ The Gluetun role is configured via the [inventory system](../saltbox/inventory/i
 gluetun_vpn_service_provider: ""
 gluetun_vpn_type: ""
 gluetun_openvpn_custom_config: ""
+gluetun_openvpn_endpoint_ip: ""
+gluetun_openvpn_endpoint_port: ""
 gluetun_openvpn_user: ""
 gluetun_openvpn_password: ""
 gluetun_openvpn_key_passphrase: ""
-gluetun_vpn_endpoint_ip: ""
-gluetun_vpn_endpoint_port: ""
+gluetun_wireguard_endpoint_ip: ""
+gluetun_wireguard_endpoint_port: ""
 gluetun_wireguard_public_key: ""
 gluetun_wireguard_private_key: ""
 gluetun_wireguard_preshared_key: ""
 gluetun_wireguard_addresses: ""
+gluetun_wireguard_mtu: ""
 gluetun_server_countries: ""
 gluetun_server_cities: ""
 gluetun_server_hostnames: ""
@@ -48,7 +51,7 @@ gluetun_firewall_outbound_subnets: ""
     ```yaml
     gluetun_openvpn_user: "ePWh!Y^fs6p%B*6S"
     gluetun_openvpn_password: "qA5V6&#ASx4DY8qG"
-    gluetun_vpn_endpoint_port: "12345"
+    gluetun_openvpn_endpoint_port: "12345"
     ```
     
     Generally speaking it's safest to just wrap everything in quotes rather than worrying about what needs to be.  Quotes are plentiful and free.
@@ -98,6 +101,9 @@ gluetun2_docker_networks_alias_custom:
 plex2_docker_network_mode_default: "container:gluetun2"
 plex2_auth_token_proxy: "http://gluetun2:8888"
 ```
+
+Once you have made these changes to the inventory, run the plex tag to apply the changes [i.e. `sb install plex`].  This will update all your plex containers.
+
 !!! caution
     When routing Plex through Gluetun, you must access Plex between containers at `http://gluetun:32400` where you would previously use the Plex container name.
 
@@ -126,6 +132,8 @@ Depending on if the role in question supports instances or not there will be two
     
     For example, to route `jackett` through Gluetun, the entry would be `jackett_docker_network_mode: "container:gluetun"`.
 
+Once you have made these changes to the inventory, run the relevant tags to apply the changes [i.e. `sb install qbittorrent` or `sb install jackett sonarr radarr`].
+
 !!! caution
     While multiple containers may be routed through a single Gluetun instance, you must manually ensure there are no port clashes as all port binds for the connected containers will be through the Gluetun container and must have unique ports inside that container.
 
@@ -141,8 +149,8 @@ Below are some example inventory entries for some common VPN providers. These ar
     gluetun_wireguard_private_key: "your_wireguard_private_key"
     gluetun_wireguard_addresses: "your_wireguard_address_with_cidr"
     gluetun_wireguard_public_key: "server_wireguard_public_key"
-    gluetun_vpn_endpoint_ip: "wireguard_server_ip"
-    gluetun_vpn_endpoint_port: "wireguard_server_port"
+    gluetun_wireguard_endpoint_ip: "wireguard_server_ip"
+    gluetun_wireguard_endpoint_port: "wireguard_server_port"
     ```
 
 === "Proton VPN Free"
